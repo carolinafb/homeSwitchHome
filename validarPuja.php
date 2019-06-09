@@ -4,7 +4,7 @@
 	$link=conexion();    
     $idUsu= $_SESSION['id'];
     if(isset($_SESSION['login'])){
-        if ($_SESSION['rol']== 'USUARIO'){
+        if ($_SESSION['rol']== 'ESTANDAR' OR $_SESSION['rol']== 'PREMIUM'){
 			$idSub = $_POST["idSubasta"];
 			$idProp = $_POST["idPropiedad"];
 			$monto= $_POST["montoPuja"];
@@ -20,10 +20,11 @@
 				     		$consulta2 = mysqli_query ($link,$query2);
 				     		echo "<script> alert ('Su puja fue registrada correctamente');</script>";
 				     	}else{ 
-				     		echo "<script> alert ('el monto ingresado debe superar la puja maxima de la subasta');</script>";
+							 echo "<script> alert ('el monto ingresado debe superar la puja maxima de la subasta');</script>";
+							 echo "<script> window.location=\"pujar.php?idProp=$idProp&idSub=$idSub\"</script>";	
 				     	}
 				  }else{ // si NO hay pujas en esa subasta 
-					$queryPrecioBase = "SELECT subastas.ID_propiedad,subastas.precioBase FROM `propiedades` INNER JOIN subastas ON propiedades.ID = 1 WHERE subastas.ID_propiedad = $idProp";
+					$queryPrecioBase = "SELECT ID_propiedad, precioBase FROM subastas WHERE ID_propiedad = $idProp";
 					$consultaPrecioBase = mysqli_query ($link,$queryPrecioBase);
 					$fila2=mysqli_fetch_array($consultaPrecioBase);
 					if ($fila2['precioBase']<$monto){ // comparo con el precio base
@@ -31,12 +32,13 @@
 						$consulta2 = mysqli_query ($link,$query2);
 		     			echo "<script> alert ('Su puja fue registrada correctamente');</script>";
 		     		}else{
-		     			echo "<script> alert ('el monto ingresado debe superar el monto base de la subasta');</script>	";
+						 echo "<script> alert ('el monto ingresado debe superar el monto base de la subasta');</script>	";
+						 echo "<script> window.location=\"pujar.php?idProp=$idProp&idSub=$idSub\"</script>";	
 		     		}
 				}	
 			}
 				
-			 echo '<script> window.location="listarSubastas.php"</script>';	
+			echo '<script> window.location="listarSubastas.php"</script>';
 		}		
 		     		// SACAR LOS ECHO Y AGREGAR IF PARA COMPARAR CON PRECIO BASE Y CAMBIAR EL ERROR DDETALLAS DEL INDEX
 ?>

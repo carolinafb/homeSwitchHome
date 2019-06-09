@@ -57,7 +57,7 @@
 										<?php if($_SESSION['rol']== 'ADMINISTRADOR'){?>
 											<a href="cerrarSubasta.php?id=<?php echo $fila["ID_subasta"] ?>"> Cerrar Subasta </a>
 										<?php }else{
-												if($_SESSION['rol']== 'USUARIO'){?>
+												if($_SESSION['rol']== 'ESTANDAR' OR $_SESSION['rol']== 'PREMIUM'){?>
 													<a href="pujar.php?idSub=<?php echo $fila["ID_subasta"] ?> & idProp= <?php echo $fila['ID_propiedad'] ?>"> Pujar </a> 
 											<?php }
 										} ?>
