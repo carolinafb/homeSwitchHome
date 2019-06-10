@@ -25,7 +25,15 @@ if (isset($_SESSION['login'])) { // si la sesion esta iniciada muestra codigo, r
 					//actualizo el ganador de la suasta
 					$query3 = "UPDATE subastas SET ID_UsuarioGanador = $IDUsu WHERE ID = $idSub";
 					$consultaquery3 = mysqli_query($link, $query3);								
-					
+					// le resto un credito al usuario que gano la subasta
+					$queryCredito = "SELECT creditos FROM usuario WHERE ID=$IDUsu ";  
+					$consultaCredito = mysqli_query($link, $queryCredito);
+					$filaCredito = mysqli_fetch_array($consultaCredito);
+					echo "credito actual del usu",$filaCredito["creditos"];
+					$credAct=($filaCredito["creditos"]-1);
+					echo "credito descontado:",$credAct;
+					$queryCreditosUsuario = "UPDATE usuario SET creditos = $credAct WHERE ID=$IDUsu ";  
+					$consultaCreditosUsuario = mysqli_query($link, $queryCreditosUsuario);
 				} else {
 					echo '<script>alert("Subasta cerrada correctamente, Sin puja.Sin ganador")</script>';
 				}
@@ -36,8 +44,8 @@ if (isset($_SESSION['login'])) { // si la sesion esta iniciada muestra codigo, r
 		}
 	}
 } ?>
-<!--<script>
+<script>
 	window.location = "listarSubastas.php"
-</script>-->
+</script>
 
 </html>
