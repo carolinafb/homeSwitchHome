@@ -12,7 +12,7 @@
       // $estado= $_POST['estadoPropiedad'];
       $foto = $_POST ['fotoPropiedad'];
       $idProp= $_POST['ID'];
-      $idAdmin = $_SESSION['codigo'];
+      $idAdmin = $_SESSION['email'];
 
       if (isset($idProp)){
    // process form

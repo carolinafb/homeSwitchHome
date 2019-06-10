@@ -12,7 +12,7 @@
       $ciudad = $_POST['ciudadPropiedad'];
       // $estado= $_POST['estadoPropiedad'];
       $foto = $_POST ['fotoPropiedad'];
-      $idAdmin = $_SESSION['codigo'];
+      $idAdmin = $_SESSION['email'];
       $semanaAlta= date ('Y-m-d');
       $semanaInicio= date("Y-m-d",strtotime($semanaAlta."+ 6 months"));
       $semanaFin =  date("Y-m-d",strtotime($semanaAlta."+ 1 years"));
@@ -31,6 +31,6 @@
      }
 
       
-      echo '<script> window.location="index.php"</script>'; // Esto deberia ir al listado de propiedades
+     echo '<script> window.location="index.php"</script>'; // Esto deberia ir al listado de propiedades
 
 ?>
