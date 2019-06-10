@@ -72,12 +72,12 @@
        </tr>
        <tr>
           <td>Numero de tarjeta: </td>
-          <td><input type= 'number' name='numerotarjeta' id='numerotarjeta' required/></td>
+          <td><input type= 'number' name='numerotarjeta' id='numerotarjeta' placeholder="16 caracteres correspondientes" required/></td>
        </tr>
        <th></th>
        <tr>
           <td>Nombre y apellido </td>
-          <td><input type="text" name="nomYape" id="nomYape" title="tal cual este impreso en la tarjeta" required/></td>
+          <td><input type="text" name="nomYape" id="nomYape" placeholder="tal cual impreso en la tarjeta" required/></td>
        </tr>
        <tr>
          <td>Fecha de expiracion</td>
@@ -89,7 +89,7 @@
        </tr>
   </table>
   <br>
-  <input  type="submit" value="Registrarse" onclick="validarform()"> 
+  <input  type="submit" value="Registrarse" onclick="validarform()">
    </fieldset>
  </form>
 </body>
