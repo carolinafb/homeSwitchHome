@@ -30,6 +30,21 @@
       <?php echo "Pa&iacutes de Recidencia: ", $_SESSION["pais"];?>
       <hr/>
       <?php echo "Usuario: ", $_SESSION["rol"];?>
+      <?php
+      $tarifas = "SELECT * FROM `tarifas` ";
+      $consulta = mysqli_query($link,$tarifas);
+       ?>
+        <?php  if($_SESSION["rol"]=="ESTANDAR"){
+          $tarifas = "SELECT precio FROM `tarifas` WHERE titulo = 'Estandar'";
+          $consulta = mysqli_query($link,$tarifas);
+          $fila=mysqli_fetch_array($consulta);
+            echo "$",$fila ["precio"];
+        }else if($_SESSION["rol"]=="PREMIUM"){
+          $tarifas = "SELECT precio FROM `tarifas` WHERE titulo = 'Premium'";
+          $consulta = mysqli_query($link,$tarifas);
+          $fila=mysqli_fetch_array($consulta);
+            echo "$", $fila ["precio"];
+          } ?>
   </div>
 
     <br/>
@@ -39,6 +54,7 @@
       <?php echo "&Uacuteltimos d&iacutegitos de Tarjeta: XXXX XXXX XXXX ", substr($_SESSION["numeroTarjeta"], -4); ?>
       <hr/>
       <?php echo "Fecha de Expiracion: ", $_SESSION["expiracion"] ; ?>
+      <hr/>
     </div>
 	</body>
 
