@@ -1,3 +1,7 @@
+<?php
+include "conexion.php";
+$link=conexion();
+ ?>
 <html>
 <head>
 
@@ -9,6 +13,19 @@
 
   </head>
 <body>
+  <?php
+  $tarifas = "SELECT * FROM `tarifas` ";
+  $consulta = mysqli_query($link,$tarifas);
+   ?>
+   <h2>Tarifas</h2>
+  <?php  while ($fila=mysqli_fetch_array($consulta)){?>
+    <table>
+      <tr> <!-- Abro una fila -->
+        <td> <?php echo $fila["titulo"], " "; ?> </td>
+        <td> <?php echo "$",$fila["precio"] ?></td>
+      </tr>
+     <?php } ?>
+  </table>
  <form name='datosUsuario' action="accion.php" method="POST" >
    <fieldset>
     <legend> <h1> Registro de Usuario </h1>	</legend>
