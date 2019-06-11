@@ -4,16 +4,21 @@
    $link=conexion();
 
 ?>
+
 <head> </head>
 	<title>Home Switch Home </title>
 </head>
+
+
 
 <body>
 	<?php
     	if(isset($_SESSION['login'])){// si la sesion esta iniciada muestra nombre, rol y el cerrar sesion
     ?>
+
     <?php echo "Bienvenido ",$_SESSION['nombre']," ",$_SESSION['apellido']; ?>
     <?php echo " eres usuario ", $_SESSION["rol"]; ?>
+        
         <div align="right">
           <a href="perfilUsuario.php"> Mi perfil </a>
           &nbsp|&nbsp
@@ -35,12 +40,16 @@
     	if(isset($_SESSION['login'])){// si la sesion es un admin muestra el alta de propiedad
    			if($_SESSION['rol']== 'ADMINISTRADOR'){
    	 ?>
+   	 	<hr style="color: #000000;" />
     	<a href="altapropiedad.php"> Agregar propiedad </a>
+    	<a href="verClientes.php" ><p style="text-align:center"> Ver Listado de Clientes </a>
     	<br/>
 	<?php } }
 	if(isset($_SESSION['login'])){?>
 
-	<a href="listarSubastas.php"> Lista de subastas </a>
+	<a href="listarSubastas.php"><p style="text-align:left"> Lista de subastas </a>
+
+	<hr style="color: #000000;" />
 	<?php }
 
 
