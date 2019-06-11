@@ -60,7 +60,7 @@ $link = conexion();
                                     <!--cierro columna-->
                                     <td>
                                         <!--abro columna para mostrar el aceptar -->
-                                        <a href="aceptarPase.php?id=<?php echo $fila2["id"] ?>">Aceptar pase</a> 
+                                        <a href="aceptarPase.php?id=<?php echo $fila["id"] ?>">Aceptar pase</a> 
                                     </td>
                                 </tr>
                             <?php } ?>
