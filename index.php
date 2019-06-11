@@ -36,6 +36,8 @@
    			if($_SESSION['rol']== 'ADMINISTRADOR'){
    	 ?>
     	<a href="altapropiedad.php"> Agregar propiedad </a>
+		<br/>
+		<a href="solicitudPaseUsuario.php"> Ver solicitud de pases de usuarios </a>
     	<br/>
 	<?php } }
 	if(isset($_SESSION['login'])){?>
