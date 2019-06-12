@@ -3,16 +3,16 @@ session_start();
 include "conexion.php";
 $link = conexion();
 $idUsu = $_SESSION['id'];
-if (isset($_SESSION['login'])) {
+if (isset($_SESSION['nombre'])) {
 	if ($_SESSION['rol'] == 'ESTANDAR' or $_SESSION['rol'] == 'PREMIUM') {
 		$idSub = $_POST["idSubasta"];
 		$idProp = $_POST["idPropiedad"];
 		$monto = $_POST["montoPuja"];
 
-		$query = "SELECT ID, ID_subasta, MAX(monto) FROM pujas WHERE ID_subasta=$idSub "; //El monto maximo pujado de la subasta. 
+		$query = "SELECT ID, ID_subasta, MAX(monto) FROM pujas WHERE ID_subasta=$idSub "; //El monto maximo pujado de la subasta.
 		$consulta = mysqli_query($link, $query);
 
-		$queryCreditosUsuario = "SELECT creditos FROM usuario WHERE ID=$idUsu "; //El monto maximo pujado de la subasta. 
+		$queryCreditosUsuario = "SELECT creditos FROM usuario WHERE ID=$idUsu "; //El monto maximo pujado de la subasta.
 		$consultaCreditosUsuario = mysqli_query($link, $queryCreditosUsuario);
 		//Controlo que el usuario tenga greditos suficientes para poder pujar
 		if (mysqli_num_rows($consultaCreditosUsuario) > 0) { // Si traigo filas
@@ -33,7 +33,7 @@ if (isset($_SESSION['login'])) {
 							echo "<script> alert ('el monto ingresado debe superar la puja maxima de la subasta');</script>";
 							echo "<script> window.location=\"pujar.php?idProp=$idProp&idSub=$idSub\"</script>";
 						}
-					} else { // si NO hay pujas en esa subasta 
+					} else { // si NO hay pujas en esa subasta
 						$queryPrecioBase = "SELECT ID_propiedad, precioBase FROM subastas WHERE ID_propiedad = $idProp";
 						$consultaPrecioBase = mysqli_query($link, $queryPrecioBase);
 						$fila2 = mysqli_fetch_array($consultaPrecioBase);

@@ -1,9 +1,8 @@
  <?php
     session_start();
-//VER SI ME TRAIGO EL ID O NO DE LA SESION
     include "conexion.php";
     $link=conexion();
-    if(isset($_SESSION['login'])){
+    if(isset($_SESSION['nombre'])){
 		    if (($_SESSION['rol']=='ESTANDAR') or ($_SESSION['rol']=='PREMIUM')){
 ?>
 <html>

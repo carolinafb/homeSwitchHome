@@ -6,24 +6,28 @@
 ?>
 <head> </head>
 	<title>Home Switch Home </title>
+
 </head>
 
 <body>
 	<?php
-    	if(isset($_SESSION['login'])){// si la sesion esta iniciada muestra nombre, rol y el cerrar sesion
+    	if(isset($_SESSION['nombre'])){// si la sesion esta iniciada muestra nombre, rol y el cerrar sesion
     ?>
+
     <?php echo "Bienvenido ",$_SESSION['nombre']," ",$_SESSION['apellido']; ?>
     <?php echo " eres usuario ", $_SESSION["rol"]; ?>
         <div align="right">
-          <a href="perfilUsuario.php"> Mi perfil </a>
-          &nbsp|&nbsp
-        	<a href="cerrarSesion.php"> Cerrar sesion </a>
-       	</div>
+          <?php if (($_SESSION["rol"] !== "ADMINISTRADOR")) {?>
+            <a href="perfilUsuario.php"> Mi perfil </a>
+          &nbsp|&nbsp <?php } ?>
+          <a href="cerrarSesion.php"> Cerrar sesion </a>
+        </div>
+
 	<?php }else{//si la sesion no esta iniciada que muestre el iniciar ?>
-			<div align="right">
-				<a href="formularioderegistro.php">Registrarse</a>&nbsp|&nbsp
-				<a href="login.php">Iniciar sesion</a>
-			</div>
+    <div align="right">
+      <a href="formularioderegistro.php">Registrarse</a>&nbsp|&nbsp
+      <a href="login.php">Iniciar sesion</a>
+    </div>
 
 	<?php }?>
 
@@ -32,13 +36,17 @@
 	</center>
 
 	<?php
-    	if(isset($_SESSION['login'])){// si la sesion es un admin muestra el alta de propiedad
+    	if(isset($_SESSION['nombre'])){// si la sesion es un admin muestra el alta de propiedad
    			if($_SESSION['rol']== 'ADMINISTRADOR'){
    	 ?>
     	<a href="altapropiedad.php"> Agregar propiedad </a>
     	<br/>
+      <br/>
+      <a href="modificarTarifas.php"> Ver tarifas </a>
+      <br/>
+      <br/>
 	<?php } }
-	if(isset($_SESSION['login'])){?>
+	if(isset($_SESSION['nombre'])){?>
 
 	<a href="listarSubastas.php"> Lista de subastas </a>
 	<?php }

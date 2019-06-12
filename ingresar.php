@@ -23,18 +23,12 @@
 		$_SESSION["expiracion"] = $row ['fechaExpiracion'];
 		$_SESSION["codSeg"] = $row['codigoSeguridad'];
 
-		$_SESSION['login']=true;
-
-
-
-
 		/*if ($row['rol'] == 'ADMINISTRADOR') {
 				echo '<script> window.location="MiPerfilAdministrador.php"</script>';
 		}else
 	echo '<script> window.location="MiPerfil.php"</script>';*/
 	echo '<script> window.location = "index.php" </script>';
 	}else{
-		$_SESSION['login']=false;
 		echo '<script> alert ("usuario o contraseña incorrecta");</script>';
 		echo '<script> window.location="login.php"; </script>';
 	}

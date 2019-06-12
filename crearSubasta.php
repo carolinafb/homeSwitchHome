@@ -1,7 +1,7 @@
-<?php	
+<?php
  	session_start();
  	include "conexion.php";
-	 $link=conexion(); 
+	 $link=conexion();
    $idProp = $_GET['id'];
 	 $estadoProp= 'DISPONIBLE';
 	 $query= "SELECT ID FROM `usuario` WHERE codigo = {$_SESSION['codigo']}";
@@ -9,19 +9,19 @@
 	 $idAdministrador= mysqli_fetch_row($consulta);
 	 $idAdmin= $idAdministrador[0];
 
-	 if(isset($_SESSION['login'])){
+	 if(isset($_SESSION['nombre'])){
 	 	if($_SESSION['rol']== 'ADMINISTRADOR'){
 
-	 		//la subasta necesita los siguientes datos: id propiedad, precio base de la subasta y semana 
+	 		//la subasta necesita los siguientes datos: id propiedad, precio base de la subasta y semana
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>HomeSwitchHome</title>
-	 		<left> 
+	 		<left>
    	 	 		<a href="index.php"> <img src='imagenes/HSH-Logo.svg' title="Home Switch Home" width="150" height="50" > </a>
  	 		</left>
- 			
+
 <style>
 table {
   font-family: arial, sans-serif;
@@ -55,10 +55,10 @@ tr:nth-child(even) {
   <tr>
     <td><input type= 'hidden' name='idAdministrador' id='idAdministrador'  value= "<?php echo $idAdmin ?>" required/>
     </td>
-   
+
   </tr>
   <?php
-    $semanaInicio= date("Y-m-d",strtotime(date("Y-m-d")."+ 6 months")); 
+    $semanaInicio= date("Y-m-d",strtotime(date("Y-m-d")."+ 6 months"));
     $semanaFin=  date("Y-m-d",strtotime(date("Y-m-d")."+ 1 years")); // me creo estas variables para restringir que las semana de las subastas a crear sean dentro de la ventana permitida
   ?>
   <tr>

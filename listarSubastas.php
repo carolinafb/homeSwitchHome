@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['login'])) {
+if (isset($_SESSION['nombre'])) {
 	include "conexion.php";
 	$link = conexion();
 	?>
@@ -102,4 +102,4 @@ if (isset($_SESSION['login'])) {
 	<?php
 } else {
 	echo '<script> window.location="index.php"</script>';
-}?></html>	
+}?></html>

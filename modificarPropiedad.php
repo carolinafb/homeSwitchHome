@@ -1,4 +1,4 @@
-<?php	
+<?php
   session_start();
   include "conexion.php";
   $link=conexion();
@@ -6,25 +6,25 @@
   $queryPujas="SELECT subastas.ID_propiedad, subastas.id as id_subasta, pujas.ID as id_puja FROM `subastas` INNER JOIN `pujas` on subastas.ID = pujas.ID_subasta where subastas.ID_propiedad = $idProp ";
   $consultaPujas= mysqli_query ($link , $queryPujas);// consulta si hay pujas asociadas al id de la propiedad que quiero modificar
 
-  if(mysqli_num_rows($consultaPujas) == 0){// si es = 0 es porque no tiene pujas 
+  if(mysqli_num_rows($consultaPujas) == 0){// si es = 0 es porque no tiene pujas
 
         $query="SELECT ID, foto, nombre, precio, pais, provincia,ciudad ,estado, descripcion, direccion FROM `propiedades` WHERE ID= $idProp";
         $consulta=mysqli_query($link, $query);
 
         $datos= mysqli_fetch_array($consulta);
-       
 
-        	 if(isset($_SESSION['login'])){
+
+        	 if(isset($_SESSION['nombre'])){
         	 	if($_SESSION['rol']== 'ADMINISTRADOR'){
         ?>
         <!DOCTYPE html>
         <html>
         <head>
         	<title>HomeSwitchHome</title>
-        	 		<left> 
+        	 		<left>
            	 	 		<a href="index.php"> <img src='imagenes/HSH-Logo.svg' title="Home Switch Home" width="150" height="50" > </a>
          	 		</left>
-         			
+
         <style>
         table {
           font-family: arial, sans-serif;
@@ -41,7 +41,7 @@
         tr:nth-child(even) {
           background-color: #dddddd;
         }
-        </style>  
+        </style>
         </head>
         <body>
         <form name='modificarPropiedad' action='modificarDatosDePropiedad.php' method="POST">
@@ -57,7 +57,7 @@
           <tr>
           	<th> Descripcion: </th>
             <td><textArea type= 'text' name='descripcionPropiedad' id='descripcionPropiedad' style="width:600px; height:200px;" required> <?php echo $datos['descripcion']?></textArea></td>
-           
+
           </tr>
           <tr>
             <th>Precio:</th>
@@ -66,7 +66,7 @@
           <tr>
             <th>Direccion:</th>
             <td><input type= 'text' name='direccionPropiedad' id='direccionPropiedad'  value = " <?php echo $datos['direccion'] ?>"  style="width: 100%" required/></td>
-            
+
           </tr>
           <tr>
             <th>Ciudad:</th>

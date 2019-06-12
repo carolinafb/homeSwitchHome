@@ -3,13 +3,13 @@
       include 'conexion.php';
       $link=conexion();
       $idPropiedad = $_GET['id'];
-		  
-		if(isset($_SESSION['login'])){// si la sesion esta iniciada muestra codigo, rol y el cerrar sesion
-   			if($_SESSION['rol']== 'ADMINISTRADOR'){	
+
+		if(isset($_SESSION['nombre'])){// si la sesion esta iniciada muestra codigo, rol y el cerrar sesion
+   			if($_SESSION['rol']== 'ADMINISTRADOR'){
 
    				$query= "SELECT ID FROM `subastas` WHERE ID_propiedad = $idPropiedad ";
     			$consulta = mysqli_query($link,$query);
-        
+
          	if(mysqli_num_rows($consulta)> 0){
        			echo 'No se ha podido eliminar la propiedad';
        			}
@@ -22,4 +22,3 @@
       }
   }
   ?>
-    

@@ -3,16 +3,16 @@
 		session_start();
 		include 'conexion.php';
 		$link=conexion();
-    	if(isset($_SESSION['login'])){
-   			if($_SESSION['rol']== 'ADMINISTRADOR'){					
+    	if(isset($_SESSION['nombre'])){
+   			if($_SESSION['rol']== 'ADMINISTRADOR'){
 				$idSubasta = $_GET["id"];
-			//Calcular el ganador 	
-			$queryGanador="SELECT ID_Usuario, MAX(monto) FROM pujas WHERE ID_subasta=$idSubasta ";//El monto maximo pujado de la subasta. 
+			//Calcular el ganador
+			$queryGanador="SELECT ID_Usuario, MAX(monto) FROM pujas WHERE ID_subasta=$idSubasta ";//El monto maximo pujado de la subasta.
 			$consultaGanador=mysqli_query($link, $query);
 			if (mysqli_num_rows($consultaGanador)>0) {// Si traigo filas
 				$fila=mysqli_fetch_array($consultaGanador);
 				$IDUsu= $fila['ID_Usuario'];
-				$queryUsuario="SELECT nombre,apellido FROM usuario WHERE ID=$IDUsu ";//El monto maximo pujado de la subasta. 
+				$queryUsuario="SELECT nombre,apellido FROM usuario WHERE ID=$IDUsu ";//El monto maximo pujado de la subasta.
 				$consultaUsuario=mysqli_query($link, $query);
 				$fila2=mysqli_fetch_array($consultaUsuario);
 				// guardo el ID del Usuario ganador de la subasta el la tabla subasta
@@ -28,5 +28,5 @@
 		}
 	}else{
 		 echo '<script> window.location="index.php"</script>';
-	}?>	
+	}?>
 </html>

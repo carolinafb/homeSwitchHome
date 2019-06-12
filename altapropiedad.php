@@ -1,14 +1,14 @@
 <?php
     session_start();
-    if(isset($_SESSION['login'])){
-        if($_SESSION['rol']== 'ADMINISTRADOR'){	
+    if(isset($_SESSION['nombre'])){
+        if($_SESSION['rol']== 'ADMINISTRADOR'){
 	         include "conexion.php";
 					 $link=conexion();
 					 ?>
 				<html>
 					<head>
  						<title>Alta Propiedad</title>
-	 					<left> 
+	 					<left>
    	 	 			 <a href="index.php"> <img src='imagenes/HSH-Logo.svg' title="Home Switch Home" width="150" height="50" > </a>
  	 					</left>
  							</br>
@@ -59,7 +59,7 @@
 							</tr>
 							<tr>
 								<td>Foto: </td>
-								<td><input type='text' name='fotoPropiedad' id='fotoPropiedad'  style="width:417;" required/></td> 
+								<td><input type='text' name='fotoPropiedad' id='fotoPropiedad'  style="width:417;" required/></td>
 								</tr>
 
 							</table>
@@ -69,9 +69,9 @@
 						</form>
 					</body>
 				</html>
-	<?php	
+	<?php
 			}
 		}else{
 			 echo '<script> window.location="index.php"</script>';
-	 }	
+	 }
 ?>
