@@ -42,12 +42,12 @@
    	 ?>
    	 	<hr style="color: #000000;" />
     	<a href="altapropiedad.php"> Agregar propiedad </a>
-<<<<<<< HEAD
+
 		<br/>
 		<a href="solicitudPaseUsuario.php"> Ver solicitud de pases de usuarios </a>
-=======
+
     	<a href="verClientes.php" ><p style="text-align:center"> Ver Listado de Clientes </a>
->>>>>>> 9e395d3f213d9b5dc595befc9e0f01dfa728e483
+
     	<br/>
 	<?php } }
 	if(isset($_SESSION['login'])){?>
