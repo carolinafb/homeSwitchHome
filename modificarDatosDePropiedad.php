@@ -12,7 +12,12 @@
       // $estado= $_POST['estadoPropiedad'];
       $foto = $_POST ['fotoPropiedad'];
       $idProp= $_POST['ID'];
+<<<<<<< HEAD
       $idAdmin = $_SESSION['codigo'];
+=======
+      $idAdmin = $_SESSION['email'];
+
+>>>>>>> 3c2874cfe6e3ecbbaae2154492d6916327551c4d
       if (isset($idProp)){
    // process form
   // $link = mysql_connect("localhost", "root");
