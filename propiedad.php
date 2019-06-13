@@ -88,6 +88,7 @@
 						</tr>
 
 						</tr>
+						<button type="button" onclick=" location.href='index.php' " > Volver </button>
 
 </body>
  </html>
