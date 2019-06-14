@@ -17,7 +17,7 @@
         table {
           font-family: arial, sans-serif;
           border-collapse: collapse;
-          width: 50%;
+          width: 100%;
         }
 
         td, th {
@@ -48,6 +48,7 @@
 				<td> Numero de Tarjeta</td>
 				<td> Nombre y Apellido de Tarjeta</td>
 				<td> Fecha de Expiracion </td>
+				<td> Fecha de Registro </td>
 			</tr>
 		<tr>
 				<td><?php echo $persona["nombre"]   ?> </td>
@@ -58,6 +59,7 @@
 				<td><?php echo $persona["numeroTarjeta"]   ?></td>
 				<td><?php echo $persona["nombreYapellidoDeTarjeta"]  ?></td>
 				<td><?php echo $persona["fechaExpiracion"]  ?></td>
+				<td><?php echo $persona["fechaRegistro"]  ?></td>
 
 			</tr>
 			</table>

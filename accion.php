@@ -76,7 +76,7 @@
        		$link=conexion();
        		$aux=mysqli_query($link,"SELECT * FROM usuario WHERE email = '$email'");// me fijo si existe el mail
       		if(mysqli_num_rows($aux) == 0){ // obtengo el numero de filas de la variable, si es 0 es porque el mail no esta registrado.
-				mysqli_query ($link,"INSERT INTO `usuario`(`nombre`, `apellido`, `email`,`contrasena`,`pais`,`fechaNacimiento`,`rol`,`numeroTarjeta`, `nombreYapellidoDeTarjeta`, `fechaExpiracion`, `codigoSeguridad`) VALUES('$nombre','$apellido','$email','$contrasena','$pais','$fechaNacimiento','ESTANDAR','$numerotarjeta','$nomYape','$expiracion','$codSeg')");// FUNCIONA WOJU
+				mysqli_query ($link,"INSERT INTO `usuario`(`nombre`, `apellido`, `email`,`contrasena`,`pais`,`fechaNacimiento`,`rol`,`numeroTarjeta`, `nombreYapellidoDeTarjeta`, `fechaExpiracion`, `codigoSeguridad`, `fechaRegistro`) VALUES('$nombre','$apellido','$email','$contrasena','$pais','$fechaNacimiento','ESTANDAR','$numerotarjeta','$nomYape','$expiracion','$codSeg', CURDATE())");
 				echo '<script> alert ("Usuario registrado correctamente");</script>';
 				echo '<script> window.location="index.php"; </script>';
 			}else{

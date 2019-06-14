@@ -3,110 +3,134 @@ session_start();
 include "conexion.php";
 $link = conexion();
 
-	
-  ?>
-    <html>
-	<head>
-		<title>Clientes</title>
-		<left><a href="index.php"> <img src='imagenes/HSH-Logo.svg' title="Home Switch Home" width="150" height="50"> </a></left>
-		<h1 align ='center'> Clientes </h1>
-		
-	</head>
-	    <style>
-        table {
-          font-family: arial, sans-serif;
-          border-collapse: collapse;
-          width: 50%;
-        }
+?>
+<html>
+<head>
+  <title>Clientes</title>
+  <left><a href="index.php"> <img src='imagenes/HSH-Logo.svg' title="Home Switch Home" width="150" height="50"> </a></left>
+  <h1 align ='center'> Clientes </h1>
 
-        td, th {
-          border: 1px solid #dddddd;
-          text-align: left;
-          padding: 8px;
-        }
+</head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width:100%;
+}
 
-        tr:nth-child(even) {
-          background-color: #dddddd;
-        }
-        </style>
-	<body>
-<?php
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 5px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<body>
+  <?php
   //lo que tengo que hacer es lo siguiente: Si soy admin
   //mostrar todos los clentes.
   //en html hacer un punteo por nombre, o por fecha de creacion que tenga el h2 Filtrar por 
   //en php usar select para hacer la consulta
-        	 	if (isset($_SESSION['nombre'])) {
-        	 	if($_SESSION['rol']== 'ADMINISTRADOR'){
+  if (isset($_SESSION['nombre'])) {
+   if($_SESSION['rol']== 'ADMINISTRADOR'){
+
+    ?>
+    <table>
+      <tr>
+        <td>
+          <form name='verClientesPorFiltro' action='verClientes.php' method="POST" align ='center'>
+            <fieldset><legend>Buscar por Nombre</legend>
+              <table>
+                <tr>
+                  <td><input type= 'text' name='nombre' id='nombre' style="width: 100%"></td>
+                  <td><button type="submit" > Buscar </button></td>
+                </tr>
+              </table>
+            </fieldset>
+          </td>
+          <td>
+            <form name='verClientesPorFecha' action='verClientes.php' method="POST" align ='center'>
+              <fieldset><legend>Buscar por Fecha</legend>
+                <table>
+                  <tr>
+                    <td><input type="date" name="fechaRegistro"></td>
+                    <td><button type="submit" > Buscar </button></td>
+                  </tr>
+                </table>
+              </fieldset>
+            </td>
+          </tr>
+          <tr>
+            <th>Ordenar por: </th>
+            <td><a href="verClientes.php?nombre='1'">Nombre</a></td>
+            <td><a href="verClientes.php?rol='1'">Rol</a></td>
+            <td><a href="verClientes.php?fechaRegistro='1'">FechaDeRegistro</a></td>
+          </tr>  
+        </table>
+
+        <table>
+         <tr>
+          <td> Nombre</td>
+          <td>Apellido</td>
+          <td> Fecha De Nacimiento</td>
+          <td>Pa&iacutes</td>
+          <td>Email</td>
+          <td>Fecha De Registro</td>
+
+          <?php
+          if (isset($_POST['nombre'])&& ($_POST['nombre'] != '')) {
+           $query= "SELECT * FROM `usuario` WHERE nombre = '{$_POST['nombre']}' ";
+         }
+         elseif (isset($_POST['fechaRegistro'])&& ($_POST['fechaRegistro']!= '')) {
+           $query= "SELECT * FROM `usuario` WHERE fechaRegistro = '{$_POST['fechaRegistro']}' ";  
+         }elseif (!(isset($_GET['nombre']))&& !(isset($_GET['fecha'])) && !(isset($_GET['rol']))) {
+           $query="SELECT * FROM `usuario` WHERE rol = 'ESTANDAR' OR rol= 'PREMIUM'";
+         } elseif (isset($_GET['nombre'])) {
+          $query="SELECT * FROM `usuario`  WHERE rol = 'ESTANDAR' OR rol= 'PREMIUM' ORDER BY `usuario`.`nombre` ASC ";
+        }elseif (isset($_GET['rol'])) {
+         $query = "SELECT * FROM `usuario` WHERE rol = 'ESTANDAR' OR rol= 'PREMIUM' ORDER BY `usuario`.`rol` ASC ";
+       }else{
+         $query = "SELECT * FROM `usuario` WHERE rol = 'ESTANDAR' OR rol= 'PREMIUM' ORDER BY `usuario`.`fechaRegistro` ASC ";
+       }
+
+       $consulta=mysqli_query($link, $query);
+
+       if (mysqli_num_rows($consulta)>0) {
+    
+        while ($persona= mysqli_fetch_array($consulta)) {
+          ?>
+          <tr>
+            <td><?php echo $persona["nombre"]   ?> </td>
+            <td><?php echo $persona["apellido"]  ?></td>
+            <td><?php echo $persona["fechaNacimiento"]   ?></td>
+            <td><?php echo $persona["pais"]   ?></td>
+            <td><?php echo $persona["email"]  ?></td>
+            <td><?php echo $persona["fechaRegistro"]  ?></td>
+            <td> <a href="detallesCliente.php?id=<?php echo $persona["ID"] ?> "> Ver Detalles </a></td>
+
+          </tr>
+
+          <?php				
+
+
+
+        }
+      }else {
+        echo 'No hay datos para mostrar';
+      } 
+
+    }
+
+  }
 
   ?>
+</table>
+<button type="button" onclick=" location.href='index.php' " > Volver </button>
 
-	<br><td> <form name='verClientesPorFiltro' action='verClientesPorFiltro.php' method="POST" align ='center'>
-        <fieldset><h2>Buscar Clientes</h2>
-        	<table align ='center'>
-          <tr>
-            <th>Buscar por Nombre </th>
-           <td> <input type= 'text' name='nombre' id='nombre' value = 'ingrese un nombre' style="width: 100%">
-           	 <button type="button" onclick=" location.href='index.php' " > Buscar </button>
-           </td>
-          </tr>
-        </td>
-
-			</tr>
-			<tr>
-            <th>Buscar por Fecha de Creacion </th>
-          <td> <input type="date" name="fechaNacimiento"> 
-           <button type="button" onclick=" location.href='index.php' " > Buscar </button>
-       </td>    
-          </tr>
-        </td>
-
-			</tr>
-		</table>
-	 </fieldset>
- </form>
-
-		<table>
-			<tr>
-				<td> Nombre</td>
-				<td>Apellido</td>
-				<td> Fecha De Nacimiento</td>
-				<td>Pa&iacutes</td>
-				<td>Email</td>
-				<td> </td>
-				
-	<?php
-
-        	 		$query="SELECT * FROM `usuario` WHERE  rol = 'ESTANDAR' OR rol= 'PREMIUM' ";//consulta a la base con solo datos q necesito
-    				$consulta=mysqli_query($link, $query);
-    				
-    				while ($persona= mysqli_fetch_array($consulta)) {
-    ?>
-    		<tr>
-				<td><?php echo $persona["nombre"]   ?> </td>
-				<td><?php echo $persona["apellido"]  ?></td>
-				<td><?php echo $persona["fechaNacimiento"]   ?></td>
-				<td><?php echo $persona["pais"]   ?></td>
-				<td><?php echo $persona["email"]  ?></td>
-				<td> <a href="detallesCliente.php?id=<?php echo $persona["ID"] ?> "> Ver Detalles </a></td>
-
-			</tr>
-			
-    <?php				
+</body>		
+</html>
 
 
-
-        	 }
-
-        	}
-
-        	 }
-
-	?>
-	  </table>
-	  <button type="button" onclick=" location.href='index.php' " > Volver </button>
-
-	</body>		
-	</html>
-
-		
-		
