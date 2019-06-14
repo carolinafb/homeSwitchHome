@@ -68,6 +68,7 @@ tr:nth-child(even) {
               <table>
                 <tr>
                   <td><select name= 'rol' id='rol'>
+                    <option>-------</option>
                     <option>ESTANDAR</option>
                     <option>PREMIUM</option>
                   </select></td>
@@ -95,7 +96,7 @@ tr:nth-child(even) {
           <td>Fecha De Registro</td>
 
           <?php
-          if (isset($_POST['rol'])) {
+          if (isset($_POST['rol'])&&(($_POST['rol'])!= '-------')) {
              $query= "SELECT * FROM `usuario` WHERE rol = '{$_POST['rol']}' ";
           }elseif (isset($_POST['nombre'])&& ($_POST['nombre'] != '')) {
              $query= "SELECT * FROM `usuario` WHERE nombre = '{$_POST['nombre']}' ";
