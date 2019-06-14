@@ -62,6 +62,20 @@ tr:nth-child(even) {
                 </table>
               </fieldset>
             </td>
+            <td>
+          <form name='verClientesPorTipo' action='verClientes.php' method="POST" align ='center'>
+            <fieldset><legend>Buscar por Tipo de Usuario</legend>
+              <table>
+                <tr>
+                  <td><select name= 'rol' id='rol'>
+                    <option>ESTANDAR</option>
+                    <option>PREMIUM</option>
+                  </select></td>
+                  <td><button type="submit" > Buscar </button></td>
+                </tr>
+              </table>
+            </fieldset>
+          </td>
           </tr>
           <tr>
             <th>Ordenar por: </th>
@@ -81,10 +95,11 @@ tr:nth-child(even) {
           <td>Fecha De Registro</td>
 
           <?php
-          if (isset($_POST['nombre'])&& ($_POST['nombre'] != '')) {
-           $query= "SELECT * FROM `usuario` WHERE nombre = '{$_POST['nombre']}' ";
-         }
-         elseif (isset($_POST['fechaRegistro'])&& ($_POST['fechaRegistro']!= '')) {
+          if (isset($_POST['rol'])) {
+             $query= "SELECT * FROM `usuario` WHERE rol = '{$_POST['rol']}' ";
+          }elseif (isset($_POST['nombre'])&& ($_POST['nombre'] != '')) {
+             $query= "SELECT * FROM `usuario` WHERE nombre = '{$_POST['nombre']}' ";
+          } elseif (isset($_POST['fechaRegistro'])&& ($_POST['fechaRegistro']!= '')) {
            $query= "SELECT * FROM `usuario` WHERE fechaRegistro = '{$_POST['fechaRegistro']}' ";  
          }elseif (!(isset($_GET['nombre']))&& !(isset($_GET['fecha'])) && !(isset($_GET['rol']))) {
            $query="SELECT * FROM `usuario` WHERE rol = 'ESTANDAR' OR rol= 'PREMIUM'";
@@ -99,7 +114,7 @@ tr:nth-child(even) {
        $consulta=mysqli_query($link, $query);
 
        if (mysqli_num_rows($consulta)>0) {
-    
+
         while ($persona= mysqli_fetch_array($consulta)) {
           ?>
           <tr>
