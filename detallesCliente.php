@@ -49,6 +49,7 @@
 				<td> Nombre y Apellido de Tarjeta</td>
 				<td> Fecha de Expiracion </td>
 				<td> Fecha de Registro </td>
+				<td> Tipo de Usuario </td>
 			</tr>
 		<tr>
 				<td><?php echo $persona["nombre"]   ?> </td>
@@ -60,6 +61,8 @@
 				<td><?php echo $persona["nombreYapellidoDeTarjeta"]  ?></td>
 				<td><?php echo $persona["fechaExpiracion"]  ?></td>
 				<td><?php echo $persona["fechaRegistro"]  ?></td>
+				<td><?php echo $persona["rol"]  ?></td>
+
 
 			</tr>
 			</table>
