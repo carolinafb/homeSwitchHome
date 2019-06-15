@@ -2,7 +2,6 @@
       session_start();
       include 'conexion.php';
       $link=conexion();
-
       $idPropiedad = $_POST['idPropiedad'];
       $precioBase=$_POST['precioBase'];
       $idAdministrador= $_POST['idAdministrador'];
@@ -12,7 +11,7 @@
       
       $subasta = "SELECT ID, ID_propiedad, semana, numeroSemana  FROM `subastas` WHERE ID_propiedad= $idPropiedad AND numeroSemana =$numeroSemana";
       $consulta=mysqli_query($link, $subasta);
-  
+  echo "subasta: ",$subasta; 
       if (mysqli_num_rows($consulta)>0){ // que  la consulta traiga filas
           $fila=mysqli_fetch_array($consulta);// me traigo lo que tenga la consulta
           $numeroSemanaExistente = $fila['numeroSemana'];  // me guardo la numero de semana que vino en la consulta
@@ -37,17 +36,15 @@
 
      <?php }
     }else{// si la consulta no trajo nada agrego sin problemas
-          
-            $query="INSERT INTO subastas ( ID_propiedad, precioBase, ID_administrador, estado, semana, numeroSemana ) VALUES ('$idPropiedad', '$precioBase', '$idAdministrador', '$estadoPropiedad', '$semanaSubasta','$numeroSemana')";
+          $fechaInicio=date("Y-m-d");
+            $query="INSERT INTO subastas ( ID_propiedad, precioBase, ID_administrador, estado, semana, numeroSemana, fechaInicio ) VALUES ('$idPropiedad', '$precioBase', '$idAdministrador', '$estadoPropiedad', '$semanaSubasta','$numeroSemana','$fechaInicio')";
             $result=  mysqli_query($link,$query);
-
             if($result == FALSE ){
               echo 'false';
             }
             if($result == TRUE){
                echo '<script> alert ("Subasta cargada correctamente")</script>';
-             // echo '<script> window.location="index.php"</script>'; // Esto deberia ir al listado de propiedades
-
+              echo '<script> window.location="index.php"</script>'; // Esto deberia ir al listado de propiedades
               }
     }     
      

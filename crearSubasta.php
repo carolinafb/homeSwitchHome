@@ -3,11 +3,19 @@
  	include "conexion.php";
 	 $link=conexion();
    $idProp = $_GET['id'];
-	 $estadoProp= 'DISPONIBLE';
-	 $query= "SELECT ID FROM `usuario` WHERE codigo = {$_SESSION['codigo']}";
-	 $consulta=mysqli_query($link, $query);
-	 $idAdministrador= mysqli_fetch_row($consulta);
-	 $idAdmin= $idAdministrador[0];
+   $estadoProp= 'DISPONIBLE';
+   $email=$_SESSION["email"];
+   //$query= "SELECT ID FROM usuario WHERE email = $email";
+   //$consulta=mysqli_query($link, $query);
+  
+   //echo "consula query ",$query;
+
+   //echo " ****  consula ",$consulta;
+
+   //$idAdministrador= mysqli_fetch_array($consulta);
+   //$idAdmin= $idAdministrador['ID'];
+   $idAdmin=$_SESSION["id"];
+   echo $idAdmin;
 
 	 if(isset($_SESSION['nombre'])){
 	 	if($_SESSION['rol']== 'ADMINISTRADOR'){
@@ -49,7 +57,7 @@ tr:nth-child(even) {
 <table>
   <tr>
     <th>Precio Base: </th>
-   <td> <input type= 'number' name='precioBase' id='precioBase' style="width: 100%" required/>
+   <td> <input type= 'number' name='precioBase' min='0' id='precioBase' style="width: 100%" required/>
    </td>
   </tr>
   <tr>
