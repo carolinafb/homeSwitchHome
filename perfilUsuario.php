@@ -62,6 +62,8 @@
       <hr/>
     </div>
   <a href="cancelarSuscripcion.php"> Cancelar Suscripcion </a>  
+
+  <br><button type="button" onclick=" location.href='index.php' " > Volver </button>
 	</body>
 
 
