@@ -4,7 +4,8 @@
     $link=conexion();
     if(isset($_SESSION['nombre'])){
 		    if (($_SESSION['rol']=='ESTANDAR') or ($_SESSION['rol']=='PREMIUM')){
-          $IDuser=$_SESSION["id"];
+          $IDuser= $_SESSION['id'];
+       
 ?>
 <html>
 	<head>
@@ -60,6 +61,7 @@
       <?php echo "Fecha de Expiracion: ", $_SESSION["expiracion"] ; ?>
       <hr/>
     </div>
+  <a href="cancelarSuscripcion.php"> Cancelar Suscripcion </a>  
 	</body>
 
 

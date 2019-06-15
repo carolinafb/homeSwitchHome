@@ -6,7 +6,7 @@
 			$email=$_POST['email'];
 			$contrasena=$_POST['contrasena'];
 	}
-	$sql= mysqli_query($link,"SELECT * FROM usuario WHERE email = '$email' AND contrasena ='$contrasena'");//consulto si el mail y la contrasena recibida coinciden con un usuario en la tabla de la base de datos
+	$sql= mysqli_query($link,"SELECT * FROM usuario WHERE email = '$email' AND contrasena ='$contrasena'AND estado ='ACTIVO'");//consulto si el mail y la contrasena recibida coinciden con un usuario en la tabla de la base de datos
 
 	if (mysqli_num_rows($sql)>0) { // obtengo el numero de filas de la variable, si es 0 es porque el mail no esta registrado.
 		$row= mysqli_fetch_array ($sql);
