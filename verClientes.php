@@ -49,7 +49,9 @@ tr:nth-child(even) {
                   <td><button type="submit" > Buscar </button></td>
                 </tr>
               </table>
+
             </fieldset>
+            </form>
           </td>
           <td>
             <form name='verClientesPorFecha' action='verClientes.php' method="POST" align ='center'>
@@ -61,6 +63,7 @@ tr:nth-child(even) {
                   </tr>
                 </table>
               </fieldset>
+               </form>
             </td>
             <td>
           <form name='verClientesPorTipo' action='verClientes.php' method="POST" align ='center'>
@@ -76,6 +79,7 @@ tr:nth-child(even) {
                 </tr>
               </table>
             </fieldset>
+          </form>
           </td>
           </tr>
           <tr>
