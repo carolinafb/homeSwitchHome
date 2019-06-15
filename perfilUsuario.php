@@ -56,8 +56,6 @@
       <?php echo "Fecha de Expiracion: ", $_SESSION["expiracion"] ; ?>
       <hr/>
     </div>
-
-
   <a href="cancelarSuscripcion.php"> Cancelar Suscripcion </a>  
 	</body>
 

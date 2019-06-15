@@ -55,7 +55,7 @@ tr:nth-child(even) {
           </td>
           <td>
             <form name='verClientesPorFecha' action='verClientes.php' method="POST" align ='center'>
-              <fieldset><legend>Buscar por Fecha</legend>
+              <fieldset><legend>Buscar por Fecha de Registro</legend>
                 <table>
                   <tr>
                     <td><input type="date" name="fechaRegistro"></td>
