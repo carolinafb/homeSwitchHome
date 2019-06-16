@@ -5,6 +5,8 @@ $link=conexion();
 
 $idUsuario= $_SESSION['id'];
 
+echo "holaaaaa" . $idUsuario;
+
 $query= "SELECT * FROM `usuario` WHERE id= $idUsuario";
 $consulta=mysqli_query($link, $query);
 $datos= mysqli_fetch_array($consulta);
@@ -47,13 +49,18 @@ if(isset($_SESSION['nombre'])){
 						<tr>
 
 							<th>Nombre: </th>
-							<td><input type= 'text' name='nombreUsuario' id='nombreUsuario' value = " <?php echo $datos['nombre'] ?>" style="width: 100%" required/>
+							<td><input type= 'text' name='nombreUsuario' id='nombreUsuario' value = ' <?php echo $datos['nombre'] ?>' style="width: 100%" required/>
 							</td>
 						</tr>
 						<tr>
 							<th> Apellido: </th>
-							<td><input type= 'text' name='apellidoUsuario' id='apellidoUsuario' value = " <?php echo $datos['apellido'] ?>" style="width: 100%" required/>
+							<td><input type= 'text' name='apellidoUsuario' id='apellidoUsuario' value = '<?php echo $datos['apellido'] ?>' style="width: 100%" required/>
 							</td>
+						</tr>
+						<tr>
+							<th>Email:</th>
+							<td><input type= 'text' name='email' id='email' required/></td>
+
 						</tr>
 						<tr>
 							<th> Fecha de Nacimiento: </th>
@@ -61,7 +68,7 @@ if(isset($_SESSION['nombre'])){
 						</tr>
 						<tr>
 							<th>Nueva Contraseña</th>
-							<td><input type= 'password' name='contrasenaNueva' id='contrasenaNueva' title="Minimo 6 caracteres, letras mayusculas y minisculas y por lo menos un numero o simbolo" ></td>
+							<td><input type= 'password' name='contrasenaNueva' id='contrasenaNueva' title="Minimo 6 caracteres, letras mayusculas y minisculas y por lo menos un numero o simbolo"></td>
 						</tr>
 						<tr>
 							<th>Pais: </th>
@@ -95,7 +102,7 @@ if(isset($_SESSION['nombre'])){
 
 						<tr>
 							<th>Numero de tarjeta: </th>				
-							<td><input type= 'number' name='numerotarjeta' id='numerotarjeta' value ='<?php echo substr($datos['numeroTarjeta'], -4 ) ?>' required/></td>
+							<td><input type= 'number' name='numerotarjeta' id='numerotarjeta' required/></td>
 						</tr>
 						<tr>
 							<th>Nombre y apellido </th>
