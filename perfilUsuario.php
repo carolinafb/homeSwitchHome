@@ -12,6 +12,7 @@
 		<title> Mi Perfil </title>
 		<div align="right">
        		<a href="cerrarSesion.php"> Cerrar sesion </a>
+         <br> <a href="modificarPerfil.php"> Modificar Perfil </a> </br>
        	</div>
 		<left><a href="index.php"> <img src='imagenes/HSH-Logo.svg' title="Home Switch Home" width="150" height="50" > </a></left>
 	</head>
