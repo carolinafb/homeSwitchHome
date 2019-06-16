@@ -31,6 +31,7 @@ $solicitudID= $_GET['idPase'];
                     $queryPremium = "UPDATE `usuario` SET `rol` = 'PREMIUM' WHERE `usuario`.`ID` = $userID";
                     mysqli_query($link, $queryPremium);
                     echo '<script> alert ("Usuario ESTANDAR pasado a PREMIUM correctamente")</script>';
+                    
                 } else {
                     $queryEstandar = "UPDATE `usuario` SET `rol` = 'ESTANDAR' WHERE `usuario`.`ID` = $userID;";
                     mysqli_query($link, $queryEstandar);

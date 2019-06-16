@@ -108,7 +108,7 @@ if(!(isset($_GET['nombre']))&& !(isset($_GET['ciudad']))){//si no pidieron orden
               									<br/>
               								</td> <!--cierro columna-->
               								<td><!--abro columna para mostrar el ver detalles -->
-              									<a href="propiedad.php?id=<?php echo $fila["ID"] ?>"> Ver detalles</a> <!-- es una referencia a la vista de la propiedad -->
+              									<a href="propiedad.php?id=<?php echo $fila["id"] ?>"> Ver detalles</a> <!-- es una referencia a la vista de la propiedad -->
               								</td>
               							</tr>
               					<?php }?>
