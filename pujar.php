@@ -12,7 +12,7 @@
 
             <html>
             <head>
- 			<title>Puja</title>
+ 			<title>Detalle de subasta</title>
 	 		<left><a href="index.php"> <img src='imagenes/HSH-Logo.svg' title="Home Switch Home" width="150" height="50" > </a></left>
  			</br>
             </head>
@@ -23,7 +23,7 @@
      $datos= mysqli_fetch_row($consulta);
 
     // consulta para traerme la ultima puja de esa propiedad para mostrar la ultima puja
-    echo $idPropiedad;
+   
      $queryPuja="SELECT MAX(monto), subastas.ID_propiedad, subastas.semana FROM pujas INNER JOIN subastas WHERE pujas.ID_subasta=subastas.ID AND subastas.ID_propiedad=$idPropiedad" ;//El monto maximo pujado de la subasta.
      $consultaPuja=mysqli_query($link, $queryPuja);
 
@@ -31,8 +31,6 @@
         $fila=mysqli_fetch_array($consultaPuja);
         if($fila['MAX(monto)'] != NULL){ //Si hay puja en esa subasta
             $monto=$fila['MAX(monto)'];
-            echo 'monto max:';
-            echo $monto;
             $semana= $fila['semana'];
 
 
@@ -41,10 +39,6 @@
             $consultaPrecioBase = mysqli_query ($link,$queryPrecioBase);
             $fila2=mysqli_fetch_array($consultaPrecioBase);
            $monto=$fila2['precioBase'];
-           echo 'precio base:';
-           echo $monto;
-           echo 'id prop:';
-           echo $fila2['ID_propiedad'];
            $semana= $fila2['semana'];
        }
    }

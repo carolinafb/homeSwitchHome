@@ -14,7 +14,7 @@ if (isset($_SESSION['nombre'])) {
 		<?php
 		$query = "SELECT propiedades.nombre, propiedades.foto, propiedades.ciudad, propiedades.pais, propiedades.provincia, propiedades.direccion,subastas.ID as ID_subasta, subastas.estado, subastas.precioBase, subastas.ID_propiedad as ID_propiedad, subastas.semana FROM `propiedades` INNER JOIN subastas ON propiedades.ID = subastas.ID_propiedad WHERE 1=1"; //consulta a la base con solo datos q necesito
 		$consulta = mysqli_query($link, $query);
-		if (mysqli_num_rows($consulta) > 0) { ?>
+		if ($fila=mysqli_num_rows($consulta) > 0) { ?>
 			<!-- comparo el numero de filas que trajo la consulta con 0, si es 0 no trajo ningun dato-->
 			<center>
 				<!-- centro la tabla -->
@@ -73,7 +73,7 @@ if (isset($_SESSION['nombre'])) {
 										<!-- <a href="cerrarSubasta.php?id=<?php echo $fila["ID_subasta"] ?>"> Cerrar Subasta </a>  -->
 									<?php } else {
 									if ($_SESSION['rol'] == 'ESTANDAR' or $_SESSION['rol'] == 'PREMIUM') { ?>
-											<a href="pujar.php?idSub=<?php echo $fila["ID_subasta"] ?> & idProp= <?php echo $fila['ID_propiedad'] ?>"> Pujar </a>
+											<a href="pujar.php?idSub=<?php echo $fila["ID_subasta"] ?> & idProp= <?php echo $fila['ID_propiedad'] ?>"> Ver detalles ... </a>
 										<?php }
 								} ?>
 								</td>
@@ -86,16 +86,16 @@ if (isset($_SESSION['nombre'])) {
 				<?php if ($_SESSION['rol'] == 'ADMINISTRADOR') { ?>
 					<a href="scriptCerrarSubastas.php"> correr script para cerrar subastas</a>
 					<?php } ?>
-				<center>
+			
+			<?php }
+		?>
+			<center>
 				<?php if ($fila == NULL) {
 					echo " No hay mas subastas "; ?>
 					<button type="button" onclick=" location.href='index.php' "> Volver </button>
 				<?php }
 			?>
-
-
-			<?php }
-		?>
+			</center>
 
 		</body>
 

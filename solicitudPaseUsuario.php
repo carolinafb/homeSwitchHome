@@ -61,26 +61,33 @@ $link = conexion();
                                         <!--abro columna para mostrar el aceptar -->
                                         <a href="aceptarPase.php?idUser=<?php echo $IDuser ?>&idPase=<?php echo $IDSolicitud ?>">Aceptar pase</a>
                                     </td>
-                                </tr>
-                                <br />
+
+                                <?php
+                            } ?>
+
+                                <?php if ($fila == NULL or $fila == 'HABILITADA') { // ESTO DEL HABILITADA NO ESTOY SEGRA DESPUES LO MIRO
+                                    echo "Sin solicitudes pentientes";
+                                }
+                                ?>
 
                             <?php } ?>
 
-                       
-
-                        <?php if ($fila == NULL or $fila == 'HABILITADA') { // ESTO DEL HABILITADA NO ESTOY SEGRA DESPUES LO MIRO
-                            echo "Sin solicitudes pentientes";
-                        }
-                        ?>
-
-                    <?php } ?>
 
                     </table> <!-- fin de tabla -->
 
                 </center>
 
-            <?php }
-    }
+            <?php } ?>
+            <center>
+                <tr>
+                    <?php if ($fila == NULL) {
+                        echo " No hay mas solicitudes de pases "; ?>
+                        <button type="button" onclick=" location.href='index.php' "> Volver </button>
+                    <?php } ?>
+                </tr>
+                <br />
+            </center>
+        <?php }
 }  ?>
 
 
