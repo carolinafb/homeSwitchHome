@@ -45,8 +45,8 @@ tr:nth-child(even) {
             <fieldset><legend>Buscar por Nombre</legend>
               <table>
                 <tr>
-                  <td><input type= 'text' name='nombre' id='nombre' style="width: 100%"></td>
-                  <td><button type="submit" > Buscar </button></td>
+                  <td><input type= 'text' name='nombreUsuario' id='nombreUsuario' style="width: 100%"></td>
+                  <td><button type="submit" > Buscar Por Nombre </button></td>
                 </tr>
               </table>
 
@@ -59,7 +59,7 @@ tr:nth-child(even) {
                 <table>
                   <tr>
                     <td><input type="date" name="fechaRegistro"></td>
-                    <td><button type="submit" > Buscar </button></td>
+                    <td><button type="submit" > Buscar Por Fecha de Registro </button></td>
                   </tr>
                 </table>
               </fieldset>
@@ -102,8 +102,8 @@ tr:nth-child(even) {
           <?php
           if (isset($_POST['rol'])&&(($_POST['rol'])!= '-------')) {
              $query= "SELECT * FROM `usuario` WHERE rol = '{$_POST['rol']}' ";
-          }elseif (isset($_POST['nombre'])&& ($_POST['nombre'] != '')) {
-             $query= "SELECT * FROM `usuario` WHERE nombre = '{$_POST['nombre']}' ";
+          }elseif (isset($_POST['nombreUsuario'])&& ($_POST['nombreUsuario'] != '')) {
+             $query= "SELECT * FROM `usuario` WHERE nombre = '{$_POST['nombreUsuario']}' ";
           } elseif (isset($_POST['fechaRegistro'])&& ($_POST['fechaRegistro']!= '')) {
            $query= "SELECT * FROM `usuario` WHERE fechaRegistro = '{$_POST['fechaRegistro']}' ";  
          }elseif (!(isset($_GET['nombre']))&& !(isset($_GET['fecha'])) && !(isset($_GET['rol']))) {

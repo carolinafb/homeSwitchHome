@@ -5,7 +5,7 @@ $link=conexion();
 
 $idUsuario= $_SESSION['id'];
 
-echo "holaaaaa" . $idUsuario;
+
 
 $query= "SELECT * FROM `usuario` WHERE id= $idUsuario";
 $consulta=mysqli_query($link, $query);
@@ -49,7 +49,7 @@ if(isset($_SESSION['nombre'])){
 						<tr>
 
 							<th>Nombre: </th>
-							<td><input type= 'text' name='nombreUsuario' id='nombreUsuario' value = ' <?php echo $datos['nombre'] ?>' style="width: 100%" required/>
+							<td><input type= 'text' name='nombreUsuario' id='nombreUsuario' value = '<?php echo $datos['nombre'] ?>' style="width: 100%" required/>
 							</td>
 						</tr>
 						<tr>
@@ -109,7 +109,7 @@ if(isset($_SESSION['nombre'])){
 							<td><input type="text" name="nomYape" id="nomYape" placeholder="tal cual impreso en la tarjeta" required/></td>
 						</tr>
 						<tr>
-							<th>Fecha de expiracion</th> //verificar que estos campos pueden llegar vacíos.
+							<th>Fecha de expiracion</th> 
 							<td><input type="Month" name="expiracion" id="expiracion"  required/></td>
 
 						</tr>

@@ -22,7 +22,7 @@ $email=$_POST['email'];
 
 if(isset($_SESSION['nombre'])){
 		if (($_POST['contrasenaActual']) == $contrasenaUsuario) {
-			//echo $contrasenaUsuario;
+
 			if (!preg_match("/^[A-z0-9\\._-]+@[A-z0-9][A-z0-9-]*(\\.[A-z0-9_-]+)*\\.([A-z]{2,6})$/",$email)) { /*SE VALIDA QUE EL MAIL TENGA EL FORMATO DE MAIL--> combinacion de letras/numero/signos seguidos de @ seguido de convinacion + . algo */
 				echo '<script>  alert ("email incorrecto");</script>';
 				echo '<script> window.location="perfilUsuario.php"</script>';
@@ -31,14 +31,12 @@ if(isset($_SESSION['nombre'])){
 				//actualizo la base de datos completa con los datos
 				$sql= "UPDATE `usuario` SET nombre= '$nombre', apellido='$apellido',email='$email', fechaNacimiento='$fechaNacimiento', contrasena='$contrasenaNueva', pais= '$pais', numeroTarjeta='$numerotarjeta', nombreYapellidoDeTarjeta='$nombreYapellidoDeTarjeta', fechaExpiracion='$fechaExpiracion', codigoSeguridad='$codigoSeguridad' WHERE ID= $idUsuario";
 				$primera=mysqli_query($link,$sql);
-				//echo $primera;
-				//echo "1";
+				
 			}elseif (($_POST['contrasenaNueva'])=='') {
 				//actualizo la base de datos completa con los datos
 				$sql= "UPDATE `usuario` SET nombre= '$nombre', apellido='$apellido',email='$email', fechaNacimiento='$fechaNacimiento', pais= '$pais', numeroTarjeta='$numerotarjeta', nombreYapellidoDeTarjeta='$nombreYapellidoDeTarjeta', fechaExpiracion='$fechaExpiracion', codigoSeguridad='$codigoSeguridad' WHERE ID= $idUsuario";
 				$segunda=mysqli_query($link,$sql);
-				//echo $segunda;
-				//echo "2";
+				
 			}
 			$_SESSION['nombre']=$nombre;
 			$_SESSION ["apellido"]=$apellido;

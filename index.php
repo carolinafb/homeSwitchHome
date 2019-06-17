@@ -66,7 +66,7 @@
 //ACA COMIENZA EL CODIGO DE LA TABLA DE PROPIEDADES
 //orden
 if(!(isset($_GET['nombre']))&& !(isset($_GET['ciudad']))){//si no pidieron orden en particular
-   $query="SELECT foto, nombre, precio,pais, provincia,ciudad,id,estado FROM `propiedades` WHERE 1=1";//consulta a la base con solo datos q necesito
+   $query="SELECT ID, foto, nombre, precio,pais, provincia,ciudad,id,estado FROM `propiedades` WHERE 1=1";//consulta a la base con solo datos q necesito
 }else {
   if(isset($_GET['nombre'])){ // si se pidio orden por nombre
     $query="SELECT * FROM `propiedades` ORDER BY `propiedades`.`nombre` ASC";
@@ -77,7 +77,7 @@ if(!(isset($_GET['nombre']))&& !(isset($_GET['ciudad']))){//si no pidieron orden
 }
 
      $consulta=mysqli_query($link, $query);
-     if (mysqli_num_rows($consulta)>0) { ?> <!-- comparo el numero de filas que trajo la consulta con 0, si es 0 no trajo ningun dato-->
+     if (mysqli_num_rows($consulta) >0) { ?> <!-- comparo el numero de filas que trajo la consulta con 0, si es 0 no trajo ningun dato-->
 
 				<center><!-- centro la tabla -->
 					<table width="800"> <!-- comienza la tabla -->
@@ -89,11 +89,11 @@ if(!(isset($_GET['nombre']))&& !(isset($_GET['ciudad']))){//si no pidieron orden
               <?php
               	     while ($fila=mysqli_fetch_array($consulta)){?> <!--Mientras existan filas en la consulta, Muestro los datos de cada propiedad -->
               	    <!--Fetch array: devuelve un array datos de la fila recuperada, o FALSE si no hay más filas. trae una fila y avanza el puntero -->
-              						<?php if( $fila["estado"]=="DISPONIBLE"){	?>
+              						<?php if( $fila["estado"]=='DISPONIBLE'){	?>
               							<tr> <!-- Abro una fila -->
               								<td> <!--abro una columna muestro la FOTO-->
               									<br/>
-              									<img src= <?php echo $fila["foto"] ?>  width=200 height="200" > <!--para lograr que funcione tuve que poner "" entre la url en la base de datos -->
+              									<img src= <?php echo $fila['foto'] ?>  width=200 height="200" > <!--para lograr que funcione tuve que poner "" entre la url en la base de datos -->
               									<br/>
               								</td>
               								<td> <!--abro una columna y muestro todos los demas datos -->
@@ -108,7 +108,7 @@ if(!(isset($_GET['nombre']))&& !(isset($_GET['ciudad']))){//si no pidieron orden
               									<br/>
               								</td> <!--cierro columna-->
               								<td><!--abro columna para mostrar el ver detalles -->
-              									<a href="propiedad.php?id=<?php echo $fila["id"] ?>"> Ver detalles</a> <!-- es una referencia a la vista de la propiedad -->
+              									<a href="propiedad.php?id=<?php echo $fila['ID']?>"> Ver detalles</a> <!-- es una referencia a la vista de la propiedad -->
               								</td>
               							</tr>
               					<?php }?>

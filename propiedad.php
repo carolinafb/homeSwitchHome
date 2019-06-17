@@ -80,13 +80,6 @@
 								<hr style="color: #000000;" />
 							</br></td>
 						</tr>
-						<tr>
-						<td><br> <b>Precio: $ </b>
-								<?php echo $datos[3] ?>
-								<hr style="color: #000000;" />
-							</br></td>
-						</tr>
-
 						</tr>
 						<button type="button" onclick=" location.href='index.php' " > Volver </button>
 
