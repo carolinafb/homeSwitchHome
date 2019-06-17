@@ -28,11 +28,11 @@
         </div>
 
 	<?php }else{//si la sesion no esta iniciada que muestre el iniciar ?>
-    <div align="right">
+    <!--<div align="right">
       <a href="formularioderegistro.php">Registrarse</a>&nbsp|&nbsp
       <a href="login.php">Iniciar sesion</a>
-    </div>
-
+    </div>-->
+	echo '<script> window.location="inicioSinLog.php"</script>';
 	<?php }?>
 
 	<center> <!-- esta es la imagen de la portada -->

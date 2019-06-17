@@ -30,7 +30,6 @@ if (isset($_SESSION['nombre'])) { // si la sesion esta iniciada muestra codigo, 
 					echo "credito actual del usu", $filaCredito ["creditos"];
 					if ($filaCredito ['creditos'] > 0) {
 						$credAct = ($filaCredito ["creditos"] - 1);
-						echo "credito descontado:", $credAct;
 						$query3 = "UPDATE subastas SET ID_UsuarioGanador=$IDUsu WHERE ID=$idSub  ";
 						$consultaquery3 = mysqli_query ($link, $query3);
 						$queryCreditosUsuario = "UPDATE usuario SET creditos =   $credAct WHERE ID=  $IDUsu   ";

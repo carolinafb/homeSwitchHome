@@ -15,7 +15,7 @@
    //$idAdministrador= mysqli_fetch_array($consulta);
    //$idAdmin= $idAdministrador['ID'];
    $idAdmin=$_SESSION["id"];
-   echo $idAdmin;
+   //echo $idAdmin;
 
 	 if(isset($_SESSION['nombre'])){
 	 	if($_SESSION['rol']== 'ADMINISTRADOR'){
