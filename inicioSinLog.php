@@ -36,7 +36,7 @@ $link = conexion();
                         <h2>Propiedad para reserva directa:</h2>
 
                         <br>
-                        <img src=<?php echo $datos[1]  ?>width="300" height="300">
+                        <img src=<?php echo $datos[1]  ?>width="200" height="200">
                         <br>
                         <h3>
                             <strong>
