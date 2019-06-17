@@ -51,7 +51,7 @@ $link=conexion();
         </tr>
     <th></th>
         <tr>
-         <td>Contrseña: </td>
+         <td>Contraseña: </td>
           <td><input type= 'password' name='contrasena' id='contrasena' title="Minimo 6 caracteres, letras mayusculas y minisculas y por lo menos un numero o simbolo" required/ ></td>
         </tr>
     <th></th>

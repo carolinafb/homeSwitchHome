@@ -7,7 +7,7 @@
 		if(isset($_SESSION['nombre'])){// si la sesion esta iniciada muestra codigo, rol y el cerrar sesion
    			if($_SESSION['rol']== 'ADMINISTRADOR'){
 
-   				$query= "SELECT ID FROM `subastas` WHERE ID_propiedad = $idPropiedad ";
+   				$query= "SELECT ID FROM `subastas` WHERE ID_propiedad = $idPropiedad  AND estado = 'DISPONIBLE'";
     			$consulta = mysqli_query($link,$query);
 
          	if(mysqli_num_rows($consulta)> 0){

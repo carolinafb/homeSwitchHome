@@ -81,7 +81,7 @@
 				echo '<script> window.location="index.php"; </script>';
 			}else{
          		echo '<script> alert ("El usuario que intenta registrar ya existe");</script>';
-      		  	echo '<script> window.location="index.php"; </script>';
+      		  	echo '<script> window.location="formularioderegistro.php"; </script>';
      		}
  		}else{
   			echo '<script> window.location="formularioderegistro.php";</script>';
