@@ -1,9 +1,11 @@
 <?php
     session_start();
+      include "conexion.php";
+	  $link=conexion();
     if(isset($_SESSION['nombre'])){
         if($_SESSION['rol']== 'ADMINISTRADOR'){
-	         include "conexion.php";
-					 $link=conexion();
+
+					 
 					 ?>
 				<html>
 					<head>
@@ -55,7 +57,7 @@
 							</tr>-->
 							<tr>
 								<td>Ciudad: </td>
-								<td><input type="text" name="ciudadPropiedad" id="ciudadPropiedad"   style="width:417;" required/> </td>
+								<td><input type="text" name="ciudadPropiedad" id='ciudadPropiedad'   style="width:417;" required/> </td>
 							</tr>
 							<tr>
 								<td>Foto: </td>

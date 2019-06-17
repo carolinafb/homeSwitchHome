@@ -28,11 +28,11 @@
         </div>
 
 	<?php }else{//si la sesion no esta iniciada que muestre el iniciar ?>
-    <div align="right">
+    <!--<div align="right">
       <a href="formularioderegistro.php">Registrarse</a>&nbsp|&nbsp
       <a href="login.php">Iniciar sesion</a>
-    </div>
-
+    </div>-->
+	echo '<script> window.location="inicioSinLog.php"</script>';
 	<?php }?>
 
 	<center> <!-- esta es la imagen de la portada -->
@@ -156,7 +156,7 @@
               									<br/>
               								</td> <!--cierro columna-->
               								<td><!--abro columna para mostrar el ver detalles -->
-              									<a href="propiedad.php?id=<?php echo $fila["ID"] ?>"> Ver detalles</a> <!-- es una referencia a la vista de la propiedad -->
+              									<a href="propiedad.php?id=<?php echo $fila["id"] ?>"> Ver detalles</a> <!-- es una referencia a la vista de la propiedad -->
               								</td>
               							</tr>
               					<?php }?>

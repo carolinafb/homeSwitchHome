@@ -11,8 +11,8 @@ if (isset($_SESSION['nombre'])) { // si la sesion esta iniciada muestra codigo, 
 		//por cada subasta disponible controlo si pasaron los 3 dias
 		while ($fila = mysqli_fetch_array($consultaSubastasDisponibles)) {
 
-			$semanaFin = date("Y-m-d", strtotime(date("Y-m-d") . "-3 days")); // me creo estas variables para restringir que las semana de las subastas a crear sean dentro de la ventana permitida
-			if ($fila["fechaInicio"] <  $semanaFin) {
+			$diaCierre = date("Y-m-d", strtotime(date("Y-m-d") . "-3 days")); // me creo estas variables para restringir que las semana de las subastas a crear sean dentro de la ventana permitida
+			if ($fila["fechaInicio"] <  $diaCierre) {
 				$idSub = $fila["ID"];
 				//Me traigo la lista de usuarios qe pujaron ordenados descendientemente para calcular
 				//el ganador  de la subasta controlando que posea creditos.
@@ -30,7 +30,6 @@ if (isset($_SESSION['nombre'])) { // si la sesion esta iniciada muestra codigo, 
 					echo "credito actual del usu", $filaCredito ["creditos"];
 					if ($filaCredito ['creditos'] > 0) {
 						$credAct = ($filaCredito ["creditos"] - 1);
-						echo "credito descontado:", $credAct;
 						$query3 = "UPDATE subastas SET ID_UsuarioGanador=$IDUsu WHERE ID=$idSub  ";
 						$consultaquery3 = mysqli_query ($link, $query3);
 						$queryCreditosUsuario = "UPDATE usuario SET creditos =   $credAct WHERE ID=  $IDUsu   ";
