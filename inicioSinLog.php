@@ -12,18 +12,18 @@ $link = conexion();
 </head>
 
 <body>
-
+  <div align="right">
+      <a href="formularioderegistro.php">Registrarse</a>&nbsp|&nbsp
+      <a href="login.php">Iniciar sesion</a>
+  </div>
     <center>
         <!-- esta es la imagen de la portada -->
         <div class='portada'><img src='imagenes/logoHomeSwitchHome.png' title="Home Switch Home" width="550" height="250"> </div>
     </center>
-    <div align="right">
-        <a href="formularioderegistro.php">Registrarse</a>&nbsp|&nbsp
-        <a href="login.php">Iniciar sesion</a>
-    </div>
+
     <div style="display:flex; width:100%">
 
-    
+
         <?php
         $query = "SELECT ID, foto, nombre, precio, pais, provincia,ciudad ,estado, descripcion, direccion FROM `propiedades` ORDER BY RAND() LIMIT 1";
         $consulta = mysqli_query($link, $query);
@@ -34,7 +34,7 @@ $link = conexion();
                 <tr>
                 <center>
                         <h2>Propiedad para reserva directa:</h2>
-                      
+
                         <br>
                         <img src=<?php echo $datos[1]  ?>width="300" height="300">
                         <br>
@@ -42,7 +42,7 @@ $link = conexion();
                             <strong>
                                 <div align="center"> <?php echo $datos[2] ?> </div>
                             </strong>
-                      
+
                         </h3>
                         <td>
                             <br> <b>Descripcion: </b>
@@ -70,11 +70,6 @@ $link = conexion();
                         <?php echo $datos[4] ?>
                     </td>
                 </tr>
-                <tr>
-                    <td><br> <b>Precio: $ </b>
-                        <?php echo $datos[3] ?>
-                    </td>
-                </tr>
             </div>
             </tr>
         </center>
@@ -95,7 +90,7 @@ $link = conexion();
                     <td>
                         <!--abro una columna muestro la FOTO-->
                         <br />
-                        <img src=<?php echo $filaSubasta["foto"] ?> width="200" height="200">
+                        <img src= <?php echo $filaSubasta["foto"] ?> width="200" height="200">
                         <!--para lograr que funcione tuve que poner "" entre la url en la base de datos -->
                         <br />
                     </td>
@@ -105,7 +100,7 @@ $link = conexion();
                             <strong>
                                 <div align="center"> <?php echo $filaSubasta["nombre"] ?> </div>
                             </strong>
-                      
+
                         </h3>
                         <br /> <!-- salto de linea -->
                         <td>
@@ -148,7 +143,7 @@ $link = conexion();
             <!--cierro columna-->
             </center>
         <?php } ?>
-       
+
     </div>
 </body>
 
