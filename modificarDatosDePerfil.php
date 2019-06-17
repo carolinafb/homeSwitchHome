@@ -46,7 +46,7 @@ if(isset($_SESSION['nombre'])){
 			$_SESSION["numeroTarjeta"]= $numerotarjeta;
 			$_SESSION["expiracion"]=$fechaExpiracion;
 
-			
+			//traer todos los datos de la tarjeta
 
 			echo '<script> alert ("Datos modificados correctamente")</script>';
 			echo '<script> window.location="perfilUsuario.php"</script>';

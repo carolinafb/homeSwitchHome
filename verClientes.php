@@ -85,7 +85,7 @@ tr:nth-child(even) {
           <tr>
             <th>Ordenar por: </th>
             <td><a href="verClientes.php?nombre='1'">Nombre</a></td>
-            <td><a href="verClientes.php?rol='1'">Rol</a></td>
+            <td><a href="verClientes.php?rol='1'">Tipo de Usuario</a></td>
             <td><a href="verClientes.php?fechaRegistro='1'">FechaDeRegistro</a></td>
           </tr>  
         </table>
@@ -98,6 +98,7 @@ tr:nth-child(even) {
           <td>Pa&iacutes</td>
           <td>Email</td>
           <td>Fecha De Registro</td>
+          <td>Tipo de Usuario</td>
 
           <?php
           if (isset($_POST['rol'])&&(($_POST['rol'])!= '-------')) {
@@ -129,6 +130,7 @@ tr:nth-child(even) {
             <td><?php echo $persona["pais"]   ?></td>
             <td><?php echo $persona["email"]  ?></td>
             <td><?php echo $persona["fechaRegistro"]  ?></td>
+            <td><?php echo $persona["rol"]  ?></td>
             <td> <a href="detallesCliente.php?id=<?php echo $persona["ID"] ?> "> Ver Detalles </a></td>
 
           </tr>

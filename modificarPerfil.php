@@ -68,7 +68,7 @@ if(isset($_SESSION['nombre'])){
 						</tr>
 						<tr>
 							<th>Nueva Contraseña</th>
-							<td><input type= 'password' name='contrasenaNueva' id='contrasenaNueva' title="Minimo 6 caracteres, letras mayusculas y minisculas y por lo menos un numero o simbolo"></td>
+							<td><input type= 'password' name='contrasenaNueva' id='contrasenaNueva'  title="Minimo 6 caracteres, letras mayusculas y minisculas y por lo menos un numero o simbolo"></td>
 						</tr>
 						<tr>
 							<th>Pais: </th>
@@ -102,20 +102,20 @@ if(isset($_SESSION['nombre'])){
 
 						<tr>
 							<th>Numero de tarjeta: </th>				
-							<td><input type= 'number' name='numerotarjeta' id='numerotarjeta' required/></td>
+							<td><input type= 'number' name='numerotarjeta' id='numerotarjeta' value='<?php echo $datos['numeroTarjeta'] ?>' required/></td>
 						</tr>
 						<tr>
 							<th>Nombre y apellido </th>
-							<td><input type="text" name="nomYape" id="nomYape" placeholder="tal cual impreso en la tarjeta" required/></td>
+							<td><input type="text" name="nomYape" id="nomYape" value='<?php echo $datos['nombreYapellidoDeTarjeta'] ?>' required/></td>
 						</tr>
 						<tr>
 							<th>Fecha de expiracion</th> 
-							<td><input type="Month" name="expiracion" id="expiracion"  required/></td>
+							<td><input type="Month" name="expiracion" id="expiracion" value='<?php echo $datos['fechaExpiracion'] ?>' required/></td>
 
 						</tr>
 						<tr>
 							<th>Codigo de seguridad</th>
-							<td><input type="number" name="codSeg" id="codSeg"  required/></td>
+							<td><input type="number" name="codSeg" id="codSeg" value='<?php echo $datos['codigoSeguridad'] ?>' required/></td>
 
 						</tr>
 						<tr>
