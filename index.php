@@ -31,8 +31,9 @@
       <a href="formularioderegistro.php">Registrarse</a>&nbsp|&nbsp
       <a href="login.php">Iniciar sesion</a>
     </div>-->
-  echo '<script> window.location="inicioSinLog.php"</script>';
-  <?php }?>
+
+  <?php
+  echo '<script> window.location="inicioSinLog.php"</script>'; }?>
 
   <center> <!-- esta es la imagen de la portada -->
       <div class='portada'><a href='index.php'><img  src='imagenes/logoHomeSwitchHome.png' title="Home Switch Home" width="550" height="250" ></a> </div>
@@ -151,7 +152,7 @@
                                 <br/>
                               </td> <!--cierro columna-->
                               <td><!--abro columna para mostrar el ver detalles -->
-                                <a href="propiedad.php?id=<?php echo $fila["id"] ?>"> Ver detalles</a> <!-- es una referencia a la vista de la propiedad -->
+                                <a href="propiedad.php?id=<?php echo $fila["ID"] ?>"> Ver detalles</a> <!-- es una referencia a la vista de la propiedad -->
                               </td>
                             </tr>
                         <?php }?>

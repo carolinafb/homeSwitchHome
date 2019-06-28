@@ -5,7 +5,7 @@
     if(isset($_SESSION['nombre'])){
 		    if (($_SESSION['rol']=='ESTANDAR') or ($_SESSION['rol']=='PREMIUM')){
           $IDuser= $_SESSION['id'];
-       
+
 ?>
 <html>
 	<head>
@@ -17,7 +17,8 @@
 		<left><a href="index.php"> <img src='imagenes/HSH-Logo.svg' title="Home Switch Home" width="150" height="50" > </a></left>
 	</head>
 	<body>
-    <h1><center> Mi Perfil </center> </h1>   
+
+    <h1><center> Mi Perfil </center> </h1>
 
        <div>
          <h4> Datos Personales </h4>
@@ -47,7 +48,13 @@
             $fila = mysqli_fetch_array($consulta);
             echo "$", $fila["precio"];
           } ?>
-
+     <hr />
+        <?php
+        $queryCreditosUsuario = "SELECT creditos FROM usuario WHERE ID = {$_SESSION['id']} "; //El monto maximo pujado de la subasta.
+        $consultaCreditosUsuario = mysqli_query($link, $queryCreditosUsuario);
+        $filaCreditos = mysqli_fetch_array($consultaCreditosUsuario);
+        echo "Usted posee ",$filaCreditos["creditos"]," creditos"; ?>
+       <hr />
          <!--le pongo el enlace para solicitar el pase de tipo de usario-->
 
          <a href="PedirPaseDesdeUsuario.php?idUser=<?php echo $IDuser ?>"> Solicitar cambio de suscripcion</a>
@@ -62,7 +69,7 @@
       <?php echo "Fecha de Expiracion: ", $_SESSION["expiracion"] ; ?>
       <hr/>
     </div>
-  <a href="cancelarSuscripcion.php"> Cancelar Suscripcion </a>  
+  <a href="cancelarSuscripcion.php"> Cancelar Suscripcion </a>
 
   <br><button type="button" onclick=" location.href='index.php' " > Volver </button>
 	</body>

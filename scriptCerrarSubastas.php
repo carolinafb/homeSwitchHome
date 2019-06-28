@@ -27,7 +27,7 @@ if (isset($_SESSION['nombre'])) { // si la sesion esta iniciada muestra codigo, 
 					$queryCredito = "SELECT creditos FROM usuario WHERE ID=  $IDUsu   ";
 					$consultaCredito = mysqli_query ($link, $queryCredito);
 					$filaCredito = mysqli_fetch_array ($consultaCredito);
-					echo "credito actual del usu", $filaCredito ["creditos"];
+					echo "credito actual del usuario (Id de usuario: ",$IDUsu,")", $filaCredito ["creditos"];
 					if ($filaCredito ['creditos'] > 0) {
 						$credAct = ($filaCredito ["creditos"] - 1);
 						$query3 = "UPDATE subastas SET ID_UsuarioGanador=$IDUsu WHERE ID=$idSub  ";
@@ -50,8 +50,9 @@ if (isset($_SESSION['nombre'])) { // si la sesion esta iniciada muestra codigo, 
 	}
 }
 } ?>
-<script>
+<!--<script>
 	window.location = "listarSubastas.php"
-</script>
+</script>-->
+<button type="button" onclick=" location.href='listarSubastas.php' " > Volver </button>
 
 </html>
