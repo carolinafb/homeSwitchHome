@@ -11,14 +11,19 @@
     			$consulta = mysqli_query($link,$query);
 
          	if(mysqli_num_rows($consulta)> 0){
-       			echo 'No se ha podido eliminar la propiedad';
-       			}
-       else {
-     	 $actualizar= "UPDATE propiedades SET estado= 'NO DISPONIBLE' WHERE ID=$idPropiedad";
-     	 mysqli_query($link,$actualizar);
-         echo '<script> alert ("Propiedad eliminada correctamente")</script>';
-         echo '<script> window.location="index.php"</script>'; // Esto deberia ir al listado de propiedades
-     }
-      }
-  }
+       			echo "<script> alert ('Propiedad eliminada correctamente con una una subasta activa')</script>";
+            //echo '<script> window.history.back()</script>';
+          } else {
+              echo '<script> alert ("Propiedad eliminada correctamente")</script>';
+          }
+          //actualizar estado de la propiedad a no DISPONIBLE
+          $actualizar= "UPDATE propiedades SET estado= 'NO DISPONIBLE' WHERE ID=$idPropiedad";
+          mysqli_query($link,$actualizar);
+          //borrar las semanas que coincidan con los id de la prop
+          $borrarSemanasDeVentana="DELETE FROM `ventanadesemanas` WHERE ID_propiedad =  $idPropiedad";
+          mysqli_query($link,$borrarSemanasDeVentana);
+
+          echo '<script> window.location="index.php"</script>'; // Esto deberia ir al listado de propiedades
+          }
+    }
   ?>

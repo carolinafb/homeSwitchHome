@@ -78,13 +78,12 @@
       		if(mysqli_num_rows($aux) == 0){ // obtengo el numero de filas de la variable, si es 0 es porque el mail no esta registrado.
 				mysqli_query ($link,"INSERT INTO `usuario`(`nombre`, `apellido`, `email`,`contrasena`,`pais`,`fechaNacimiento`,`rol`,`numeroTarjeta`, `nombreYapellidoDeTarjeta`, `fechaExpiracion`, `codigoSeguridad`, `fechaRegistro`, `estado`,`creditos`) VALUES('$nombre','$apellido','$email','$contrasena','$pais','$fechaNacimiento','ESTANDAR','$numerotarjeta','$nomYape','$expiracion','$codSeg', CURDATE(), 'ACTIVO', '2')");
 				echo '<script> alert ("Usuario registrado correctamente");</script>';
-				echo '<script> window.location="index.php"; </script>';
+				echo '<script> window.location="login.php"; </script>';
 			}else{
          		echo '<script> alert ("El usuario que intenta registrar ya existe");</script>';
-      		  	echo '<script> window.location="formularioderegistro.php"; </script>';
-     		}
+            echo '<script> window.history.back()</script>';     		}
  		}else{
-  			echo '<script> window.location="formularioderegistro.php";</script>';
+      echo '<script> window.history.back()</script>';
 
   			}
 ?>
