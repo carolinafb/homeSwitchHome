@@ -5,9 +5,15 @@ if (isset($_SESSION['nombre'])) {
 	$link = conexion();
 	?>
 <html>
+<head>
+	<div align = right><a href="cerrarSesion.php"> Cerrar sesion </a></div>
+</head>
 	<body>
-
-
+		<style> /*estilos*/
+	  table {font-family: arial, sans-serif;border-collapse: collapse;}
+	  td, th {text-align: center;padding: 5px;}
+	  tr:nth-child(even) {background-color: #dddddd;}
+	  </style>
 		<title>Subastas</title>
 		<left><a href="index.php"> <img src='imagenes/HSH-Logo.svg' title="Home Switch Home" width="150" height="50"> </a></left>
 		<br/>
@@ -83,19 +89,24 @@ if (isset($_SESSION['nombre'])) {
 				} ?>
 					<!-- fin del while -->
 				</table> <!-- fin de tabla -->
-				<?php if ($_SESSION['rol'] == 'ADMINISTRADOR') { ?>
+
+		<?php }?>
+
+		<center>
+			<?php
+			 if ($_SESSION['rol'] == 'ADMINISTRADOR') { ?>
 					<a href="scriptCerrarSubastas.php"> correr script para cerrar subastas</a>
-					<?php } ?>
-			
-			<?php }
-		?>
-			<center>
-				<?php if ($fila == NULL) {
+					<?php
+				} ?>
+			</br>
+
+			<?php
+			 if ($fila == NULL) {
 					echo " No hay mas subastas "; ?>
 					<button type="button" onclick=" location.href='index.php' "> Volver </button>
-				<?php }
-			?>
-			</center>
+					<?php
+				}?>
+		</center>
 
 		</body>
 

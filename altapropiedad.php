@@ -5,7 +5,7 @@
     if(isset($_SESSION['nombre'])){
         if($_SESSION['rol']== 'ADMINISTRADOR'){
 
-					 
+
 					 ?>
 				<html>
 					<head>
@@ -29,9 +29,13 @@
     	  				<td><textArea type= 'text' name='descripcionPropiedad' id='descripcionPropiedad' rows="10" cols="50" required></textArea></td>
     	  			</tr>
           		<tr>
-	    	  			<td>Precio: </td>
+	    	  			<td>Precio de reserva directa: </td>
     	  				<td><input type= 'number' name='precioPropiedad' id='precioPropiedad' style="width:417;" required/></td>
 							</tr>
+              <tr>
+                <td>Precio base para subasta: </td>
+                <td><input type= 'number' name='precioSubasta' id='precioSubasta' style="width:417;" required/></td>
+              </tr>
 								<tr>
 								<td>Direccion: </td>
 								<td><input type= 'text' name='direccionPropiedad' id='direccionPropiedad' style="width:417;" required/></td>

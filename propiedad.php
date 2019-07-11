@@ -21,33 +21,32 @@
 
 </html>
 
-<?php	 	}
-
-	 }
-
-
-
-?>
-
+<?php	 	} ?>
 
 	<html>
-
-
 					<head>
  						<title>HomeSwitchHome</title>
 	 					<left>
    	 	 			 <a href="index.php"> <img src='imagenes/HSH-Logo.svg' title="Home Switch Home" width="150" height="50" > </a>
  	 					</left>
- 							</br>
+ 						</br>
+            <?php
+          }if($_SESSION['rol'] !== 'ESTANDAR'){?>
+
+            <div align= "right"><a href="listarSemanasDisponibles.php?idProp=<?php echo $idPropiedad?>">Semanas disponibles para reserva</a>
+            </div>
+            <?php } ?>
 
 					</head>
 <body>
 				<caption><h1><div align="center"> <?php echo $datos[2] ?> </div></h1></caption><!-- titulo -->
-
+        <table align= center>
 						<tr>
 						<br>
+            <center>
 							<img src= <?php echo $datos[1] ?>  width="300" height="300" >
-							<hr style="color: #000000;" />
+            </center>
+              <hr style="color: #000000;" />
 						<td>
 							<br> <b>Descripcion: </b>
 							<p>
@@ -81,7 +80,9 @@
 							</br></td>
 						</tr>
 						</tr>
+        </table>
+        <center>
 						<button type="button" onclick=" location.href='index.php' " > Volver </button>
-
+        </center>
 </body>
  </html>

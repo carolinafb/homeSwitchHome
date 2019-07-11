@@ -16,15 +16,24 @@
       if(isset($_SESSION['nombre'])){// si la sesion esta iniciada muestra nombre, rol y el cerrar sesion
     ?>
 
-    <?php echo "Bienvenido ",$_SESSION['nombre']," ",$_SESSION['apellido']; ?>
-    <?php echo " eres usuario ", $_SESSION["rol"]; ?>
+    <?php
+    echo "Bienvenido ",$_SESSION['nombre']," ",$_SESSION['apellido'];
+    echo " eres usuario ", $_SESSION["rol"];
+    if (($_SESSION["rol"] !== "ADMINISTRADOR")) {
+        $queryCreditosUsuario = "SELECT creditos FROM usuario WHERE ID = {$_SESSION['id']} "; //El monto maximo pujado de la subasta.
+        $consultaCreditosUsuario = mysqli_query($link, $queryCreditosUsuario);
+        $filaCreditos = mysqli_fetch_array($consultaCreditosUsuario);
+        echo " Creditos: ",$filaCreditos["creditos"];
+    }?>
 
-        <div align="right">
-          <?php if (($_SESSION["rol"] !== "ADMINISTRADOR")) {?>
-            <a href="perfilUsuario.php"> Mi perfil </a>
-          &nbsp|&nbsp <?php } ?>
-          <a href="cerrarSesion.php"> Cerrar sesion </a>
-        </div>
+    <div align="right">
+      <?php
+      if (($_SESSION["rol"] !== "ADMINISTRADOR")) {?>
+          <a href="perfilUsuario.php"> Mi perfil </a>
+          &nbsp|&nbsp <?php
+      } ?>
+      <a href="cerrarSesion.php"> Cerrar sesion </a>
+    </div>
 
   <?php }else{//si la sesion no esta iniciada que muestre el iniciar ?>
     <!--<div align="right">
@@ -41,20 +50,25 @@
 
   <?php
       if(isset($_SESSION['nombre'])){// si la sesion es un admin muestra el alta de propiedad
-        if($_SESSION['rol']== 'ADMINISTRADOR'){
-     ?>
-      <hr style="color: #000000;" />
-    </br>
-    <div align='center'>
-            <a href="altapropiedad.php"> Agregar propiedad </a>
-      &nbsp|&nbsp
-          <a href="solicitudPaseUsuario.php"> Ver solicitud de pases de usuarios </a>
-      &nbsp|&nbsp
-            <a href="verClientes.php" > Ver Listado de Clientes </a>
-      &nbsp|&nbsp
-            <a href="modificarTarifas.php"> Ver tarifas </a>
-      &nbsp|&nbsp
-        <?php } }
+        ?>
+        <hr style="color: #000000;" />
+        </br>
+        <div align='center'>
+        <?php
+        if($_SESSION['rol']== 'ADMINISTRADOR'){?>
+          &nbsp|&nbsp
+                <a href="altapropiedad.php"> Agregar propiedad </a>
+          &nbsp|&nbsp
+                <a href="modificarTarifas.php"> Ver tarifas </a>
+          &nbsp|&nbsp
+                <a href="solicitudPaseUsuario.php"> Ver solicitud de pases de usuarios </a>
+          &nbsp|&nbsp
+                <a href="verClientes.php" > Ver Listado de Clientes </a>
+          &nbsp|&nbsp
+                <a href="scripActualizarSemanas.php"> Script para actualizar ventana semanas </a>
+          &nbsp|&nbsp  <?php
+        }
+      }
         if(isset($_SESSION['nombre'])){?>
 
         <a href="listarSubastas.php"> Lista de subastas </a>
@@ -98,7 +112,21 @@
          </fieldset>
        </form>
      </td>
-
+     <td>
+       <form name='buscarPorFecha' action='listarReservasDirectas.php' method="GET" >
+         <fieldset><legend>Buscar por Fecha</legend>
+           <table>
+             <tr>
+               <?php
+               $semanaInicio= date("Y-m-d",strtotime(date("Y-m-d")."+ 24 week"));
+               $semanaFin=  date("Y-m-d",strtotime(date("Y-m-d")."+ 47 week")); ?>
+               <td><input type= 'date' name='porFecha' id='porFecha' style="width: 100%" min= "<?php echo $semanaInicio?>" max= "<?php echo $semanaFin?>" required/></td>
+               <td><button type="submit" > Buscar </button></td>
+             </tr>
+           </table>
+         </fieldset>
+      </form>
+    </td>
     </tr>
  </table>
 <!-- Fin Del input de busqueda -->
@@ -111,6 +139,7 @@
       if(isset($_GET['porCiudad'])){ //en caso de que en se ingreso busqueda por Ciudad
         $query.=' AND ciudad LIKE "%'.$_GET['porCiudad'].'%"';
       }
+
       //orden
       if((isset($_GET['nombre']))||(isset($_GET['ciudad']))){//si se realizo pedido de orden
         if(isset($_GET['nombre'])){ // si se pidio orden por nombre
