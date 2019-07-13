@@ -51,11 +51,14 @@
   <?php
       if(isset($_SESSION['nombre'])){// si la sesion es un admin muestra el alta de propiedad
         ?>
-        <hr style="color: #000000;" />
+      
         </br>
         <div align='center'>
         <?php
         if($_SESSION['rol']== 'ADMINISTRADOR'){?>
+  
+          <a href="scripActualizarSemanas.php"> Script para actualizar ventana semanas </a>
+          <hr style="color: #000000;" />
           &nbsp|&nbsp
                 <a href="altapropiedad.php"> Agregar propiedad </a>
           &nbsp|&nbsp
@@ -64,14 +67,19 @@
                 <a href="solicitudPaseUsuario.php"> Ver solicitud de pases de usuarios </a>
           &nbsp|&nbsp
                 <a href="verClientes.php" > Ver Listado de Clientes </a>
-          &nbsp|&nbsp
-                <a href="scripActualizarSemanas.php"> Script para actualizar ventana semanas </a>
-          &nbsp|&nbsp  <?php
+          &nbsp|&nbsp 
+          <a href="listarHotsalesVigentes.php"> Lista de Hotsales vigentes </a>
+          &nbsp|&nbsp 
+                <a href="listarSubastasCerradas.php"> Lista de subastas Finalizadas </a>
+          &nbsp|&nbsp   
+           
+    
+          <?php
         }
       }
         if(isset($_SESSION['nombre'])){?>
 
-        <a href="listarSubastas.php"> Lista de subastas </a>
+        <a href="listarSubastas.php"> Lista de subastas vigentes </a>
       </br>
       </br>
         <hr style="color: #000000;" />
