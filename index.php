@@ -68,8 +68,6 @@
           &nbsp|&nbsp
                 <a href="verClientes.php" > Ver Listado de Clientes </a>
           &nbsp|&nbsp 
-          <a href="listarHotsalesVigentes.php"> Lista de Hotsales vigentes </a>
-          &nbsp|&nbsp 
                 <a href="listarSubastasCerradas.php"> Lista de subastas Finalizadas </a>
           &nbsp|&nbsp   
            
@@ -80,6 +78,9 @@
         if(isset($_SESSION['nombre'])){?>
 
         <a href="listarSubastas.php"> Lista de subastas vigentes </a>
+        &nbsp|&nbsp 
+          <a href="listarHotsalesVigentes.php"> Lista de Hotsales vigentes </a>
+        &nbsp|&nbsp 
       </br>
       </br>
         <hr style="color: #000000;" />
