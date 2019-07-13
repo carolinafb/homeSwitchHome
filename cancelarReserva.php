@@ -5,7 +5,7 @@
 
   $idReserva = $_GET['idReserva'];// id de la reserva
   $idProp = $_GET['idProp'];
-  echo "id de reserva ",$idReserva;
+//  echo "id de reserva ",$idReserva;
   $modificar= "UPDATE `reservas` SET `estado`='CANCELADO' WHERE `ID` = $idReserva "; // actualizar estado de la reserva a cancelado
   $query = mysqli_query($link,$modificar);
 
@@ -38,6 +38,6 @@
     $insertar = "INSERT INTO `hotsales`( `ID_propiedad`, `estado`, `numeroSemana`, `lunes`, `domingo`) VALUES ({$fila['ID_propiedad']},'ESPERA','$numeroDeSemana','$lunes','$domingo')";
     mysqli_query($link,$insertar); //Se da de alta como disponible para hotsale
   }
-  //echo '<script> window.history.back()</script>';
+  echo '<script> window.history.back()</script>';
 
 ?>

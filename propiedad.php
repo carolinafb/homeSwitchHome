@@ -13,9 +13,9 @@
 ?>
 <html>
 <div align= "right"><a href="modificarPropiedad.php?id=<?php echo $idPropiedad?>">Modificar Propiedad</a>
-</div>
+<!--</div>
 <div align= "right"><a href="crearSubasta.php?id=<?php echo $idPropiedad?>">Agregar a Subasta</a>
-</div>
+</div>-->
 <div align= "right"><a href="eliminarPropiedad.php?id=<?php echo $idPropiedad?>">Eliminar Propiedad</a>
 </div>
 
