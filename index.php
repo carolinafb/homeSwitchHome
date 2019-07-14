@@ -72,6 +72,8 @@
           &nbsp|&nbsp 
                <a href="listarCancelaciones.php"> Listado de Cancelaciones </a>
           &nbsp|&nbsp   
+                <a href="listarHotsalesEnEspera.php"> Listado de Hotsales en Espera </a>
+          &nbsp|&nbsp   
            
     
           <?php
