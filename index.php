@@ -69,6 +69,8 @@
                 <a href="verClientes.php" > Ver Listado de Clientes </a>
           &nbsp|&nbsp 
                 <a href="listarSubastasCerradas.php"> Lista de subastas Finalizadas </a>
+          &nbsp|&nbsp 
+               <a href="listarCancelaciones.php"> Listado de Cancelaciones </a>
           &nbsp|&nbsp   
            
     
