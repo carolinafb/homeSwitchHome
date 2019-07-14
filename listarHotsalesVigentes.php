@@ -69,10 +69,10 @@ if (isset($_SESSION['nombre'])) {
 								<td>
 									<?php if ($_SESSION['rol'] == 'ADMINISTRADOR') { ?>
                                         <!--// aca va la linea de cerrar hotsale-->
-                                        <a href=" "> Cerrar... </a>
+                                        <a href="cerrarHotsale.php"> Cerrar... </a>
 									<?php } else {
 									if ($_SESSION['rol'] == 'ESTANDAR' or $_SESSION['rol'] == 'PREMIUM') { ?>
-											<a href=" "> Comprar ... </a>
+											<a href="comprarHotsale.php"> Comprar ... </a>
 										<?php }
 								} ?>
 								</td>
