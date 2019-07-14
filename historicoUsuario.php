@@ -135,7 +135,7 @@
         <?php }else{ ?>	
                 <center> <?php echo " No hay mas pujas ";?> </center>
                 <?php } ?>
-		
+				<button type="button" onclick=" location.href='index.php' "> Volver </button>
     
     
     
