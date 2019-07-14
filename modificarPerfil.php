@@ -59,7 +59,7 @@ if(isset($_SESSION['nombre'])){
 						</tr>
 						<tr>
 							<th>Email:</th>
-							<td><input type= 'text' name='email' id='email' required/></td>
+							<td><input type= 'text' name='email' id='email' value= '<?php echo $datos['email'] ?>' required/></td>
 
 						</tr>
 						<tr>
