@@ -47,7 +47,7 @@ if (isset($_SESSION['nombre'])) { // si la sesion esta iniciada muestra codigo, 
 
 					if ($filaCredito ['creditos'] > 0) {
 						$credAct = ($filaCredito ["creditos"] - 1);
-						$query3 = "INSERT INTO `reservas`( `ID_propiedad`, `ID_usuario`, `fechaInicio`, `fechaFin`, `operacion`) VALUES ('$idProp','$IDUsu','$lunes','$domingo','SUBASTA') ";
+						$query3 = "INSERT INTO `reservas`( `ID_propiedad`, `ID_usuario`, `fechaInicio`, `fechaFin`, `operacion`,semana,precio) VALUES ('$idProp','$IDUsu','$lunes','$domingo','SUBASTA',{$fila['numeroSemana']},{$filaPuja['monto']}) ";
 						$consultaquery3 = mysqli_query ($link, $query3);
 						$queryCreditosUsuario = "UPDATE usuario SET creditos =   $credAct WHERE ID=  $IDUsu   ";
 						$consultaCreditosUsuario = mysqli_query ($link, $queryCreditosUsuario);
