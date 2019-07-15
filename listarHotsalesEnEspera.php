@@ -58,7 +58,7 @@ if (mysqli_num_rows($consulta) > 0) {
 						<td><?php echo $datos['precio']?></td>
 						<td><?php echo $datos['estado']?></td>
 						<td><?php echo $datos['lunes']?></td>
-						<td><a href="aceptarHotsale.php?idHotsale=<?php echo $datos['ID'] ?>">Habilitar Hotsale</a></td>
+						<td><a href="aceptarHotsale.php?ID=<?php echo $datos['ID']?>">Habilitar Hotsale</a></td>
 						
 					</tr>
 				</table>	
