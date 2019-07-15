@@ -92,7 +92,7 @@ if (isset($_SESSION['nombre'])) {
 								<td>
 									<?php if ($_SESSION['rol'] == 'ADMINISTRADOR') { ?>
                                         <!--// aca va la linea de cerrar hotsale-->
-										<a href="aceptarHotsale.php"> Modificar... </a>
+										<a href="aceptarHotsale.php?ID=<?php echo $idHot?>"> Modificar... </a>
 										
 									<?php } else {
 									if ($_SESSION['rol'] == 'ESTANDAR' or $_SESSION['rol'] == 'PREMIUM') { ?>

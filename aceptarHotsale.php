@@ -50,7 +50,7 @@ if (isset($_SESSION['nombre'])&&($_SESSION['rol']== 'ADMINISTRADOR')) {
       <input type="submit" value="Guardar"> <!--boton-->
     </fieldset>
      </form>
-     <button type="button" onclick=" location.href='listarHotsalesEnEspera.php' "> Volver </button>
+     <button type="button" onclick=" location.href='index.php' "> Volver </button>
 <?php
 }
 ?>
