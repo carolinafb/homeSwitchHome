@@ -43,19 +43,17 @@ $link = conexion();
   </script>
   <?php
   if ((isset($_SESSION['nombre']))) { // si la sesion esta iniciada muestra nombre, rol y el cerrar sesion
-    ?>
-    <?php echo "Bienvenido ", $_SESSION['nombre'], " ", $_SESSION['apellido']; ?>
-    <?php echo " eres usuario ", $_SESSION["rol"]; ?>
+     echo "Bienvenido ", $_SESSION['nombre'], " ", $_SESSION['apellido'];
+     echo " eres usuario ", $_SESSION["rol"]; ?>
 
     <div align="right">
       <?php
       if (($_SESSION["rol"] !== "ADMINISTRADOR")) { ?>
         <a href="perfilUsuario.php"> Mi perfil </a>
         &nbsp|&nbsp 
-                  <?php}?> 
-      <a href="cerrarSesion.php"> Cerrar sesion </a>
-    </div>
-    <center>
+         
+      <a href="cerrarSesion.php"> Cerrar sesion </a> <?php } ?>
+      <center>
       <!-- esta es la imagen de la portada -->
       <div class='portada'><a href='index.php'><img src='imagenes/logoHomeSwitchHome.png' title="Home Switch Home" width="550" height="250"></a> </div>
     </center>
@@ -83,22 +81,25 @@ $link = conexion();
                 <a href="listarHotsalesEnEspera.php"> Listado de Hotsales en Espera </a>
           &nbsp|&nbsp   
            
-    
-          <?php
-        }
-      }
-        if(isset($_SESSION['nombre'])){?>
-
-        <a href="listarSubastas.php"> Lista de subastas vigentes </a>
+          <a href="listarSubastas.php"> Lista de subastas vigentes </a>
         &nbsp|&nbsp 
           <a href="listarHotsalesVigentes.php"> Lista de Hotsales vigentes </a>
         &nbsp|&nbsp 
       </br>
       </br>
         <hr style="color: #000000;" />
-      <?php } ?>
+          <?php
+        }
+     } 
+       ?>
     </div>
 
+   
+   
+   
+   
+
+   
 
 
 
@@ -305,7 +306,7 @@ $link = conexion();
               <?php } ?>
 
             <?php } ?>
-
+          </table>
         </center>
 
       <?php
@@ -411,7 +412,7 @@ $link = conexion();
       <?php }
       
       // echo '<script> window.history.back()</script>';
-    }
+   // }
 
     ?>
 

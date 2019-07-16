@@ -23,7 +23,7 @@
  
 <h4><center> Mis Reservas </center> </h4>
 		<?php
-		$query = "SELECT propiedades.nombre,propiedades.precioDeSubasta,propiedades.precio, propiedades.foto, propiedades.ciudad, propiedades.pais, propiedades.provincia, propiedades.direccion, reservas.precio, reservas.semana, reservas.operacion, reservas.fechaInicio, reservas.fechaFin FROM `propiedades` INNER JOIN reservas ON propiedades.ID = reservas.ID_propiedad WHERE reservas.ID_Usuario=$IDuser"; //consulta a la base con solo datos q necesito
+		$query = "SELECT reservas.estado as estadoReserva, propiedades.nombre,propiedades.precioDeSubasta,propiedades.precio, propiedades.foto, propiedades.ciudad, propiedades.pais, propiedades.provincia, propiedades.direccion, reservas.precio, reservas.semana, reservas.operacion, reservas.fechaInicio, reservas.fechaFin FROM `propiedades` INNER JOIN reservas ON propiedades.ID = reservas.ID_propiedad WHERE reservas.ID_Usuario=$IDuser"; //consulta a la base con solo datos q necesito
 		$consulta = mysqli_query($link, $query);
 		if ($fila=mysqli_num_rows($consulta) > 0) { ?>
 			<!-- comparo el numero de filas que trajo la consulta con 0, si es 0 no trajo ningun dato-->
@@ -62,7 +62,10 @@
 									<?php echo $fila["fechaInicio"]," a ",$fila["fechaFin"] ?>
 									<br />  Adquirida por:
                                     <?php echo $fila["operacion"] ?>
-									<br />                                    
+									<br /> 
+									<br />  Estado:
+                                    <?php echo $fila["estadoReserva"] ?>
+									<br />                                                                       
 								</td>
 								<!--cierro columna-->
 							</tr>
@@ -83,7 +86,7 @@
 
         <h4><center> Mis Pujas </center> </h4>
         <?php
-        $queryPujas = "SELECT pujas.monto,subastas.precioBase,subastas.semana, propiedades.nombre, propiedades.foto, propiedades.ciudad, propiedades.pais, propiedades.provincia, propiedades.direccion FROM `propiedades` INNER JOIN subastas ON propiedades.ID = subastas.ID_propiedad INNER JOIN pujas ON pujas.ID_subasta=subastas.ID WHERE pujas.ID_Usuario=$IDuser ORDER BY propiedades.ID
+        $queryPujas = "SELECT pujas.monto,subastas.precioBase,subastas.estado as estadoSubasta, subastas.semana, propiedades.nombre, propiedades.foto, propiedades.ciudad, propiedades.pais, propiedades.provincia, propiedades.direccion FROM `propiedades` INNER JOIN subastas ON propiedades.ID = subastas.ID_propiedad INNER JOIN pujas ON pujas.ID_subasta=subastas.ID WHERE pujas.ID_Usuario=$IDuser ORDER BY propiedades.ID
         "; //consulta a la base con solo datos q necesito
 		$consultaPujas = mysqli_query($link, $queryPujas);
 		if ($fila=mysqli_num_rows($consultaPujas) > 0) { ?>
@@ -122,6 +125,13 @@
 									<?php echo $filaPujas["semana"] ?>
 									<br /> Monto Puja:       
                                     <?php echo $filaPujas["monto"] ?>
+									<br />   
+									<br />  Estado de la subasta:
+									<?php if ($filaPujas["estadoSubasta"]=='DISPONIBLE') {
+										echo "ABIERTA";
+									} else {
+										echo "CERRADA";
+									}?>
 									<br />                               
 								</td>
 								<!--cierro columna-->
