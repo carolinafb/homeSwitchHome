@@ -25,7 +25,8 @@ if(isset($_SESSION['nombre'])){
 
 			if (!preg_match("/^[A-z0-9\\._-]+@[A-z0-9][A-z0-9-]*(\\.[A-z0-9_-]+)*\\.([A-z]{2,6})$/",$email)) { /*SE VALIDA QUE EL MAIL TENGA EL FORMATO DE MAIL--> combinacion de letras/numero/signos seguidos de @ seguido de convinacion + . algo */
 				echo '<script>  alert ("email incorrecto");</script>';
-				echo '<script> window.location="perfilUsuario.php"</script>';
+				      echo '<script> window.history.back()</script>';
+
 			}
 			elseif (($_POST['contrasenaNueva'])!='') {
 				//actualizo la base de datos completa con los datos
@@ -53,7 +54,8 @@ if(isset($_SESSION['nombre'])){
 
 		}else{
 			echo '<script> alert ("Contrasenia incorrecta")</script>';
-			echo '<script> window.location="modificarPerfil.php"</script>';
+			echo '<script> window.history.back()</script>';
+
 
 
 

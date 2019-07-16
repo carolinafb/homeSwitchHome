@@ -34,14 +34,15 @@ tr:nth-child(even) {
 if(isset($_SESSION['nombre'])&&($_SESSION['rol']== 'ADMINISTRADOR')){ 
 	$queryCancelaciones= "SELECT usuario.nombre, usuario.apellido, usuario.email , usuario.ID as userID, cancelaciones.ID_usuario, cancelaciones.motivoCancelacion, cancelaciones.ID as cancelID FROM usuario INNER JOIN cancelaciones WHERE usuario.ID= cancelaciones.ID_usuario";
 	$consultaCancelaciones = mysqli_query($link, $queryCancelaciones);
-	if (mysqli_num_rows($consultaCancelaciones) > 0) { 
-
-		while ($datos = mysqli_fetch_array($consultaCancelaciones)) {
+	if (mysqli_num_rows($consultaCancelaciones) > 0) { ?>
+		<h2>Listado de Cancelaciones</h2>	
+		<?php while ($datos = mysqli_fetch_array($consultaCancelaciones)) {
 			?>
 
 			<body>
-				<h2>Listado de Cancelaciones</h2>
+				
 				<table>
+					<br>
 					<tr>
 						<td>Nombre</td>
 						<td>Apellido</td>
@@ -54,6 +55,7 @@ if(isset($_SESSION['nombre'])&&($_SESSION['rol']== 'ADMINISTRADOR')){
 						<td><?php echo $datos['email']?></td>
 						<td><?php echo $datos['motivoCancelacion']?></td>
 					</tr>
+					<br>
 				</table>	
 
 

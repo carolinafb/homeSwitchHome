@@ -70,7 +70,7 @@
           &nbsp|&nbsp 
                 <a href="listarSubastasCerradas.php"> Lista de subastas Finalizadas </a>
           &nbsp|&nbsp 
-               <a href="listarCancelaciones.php"> Listado de Cancelaciones </a>
+               <a href="listarCancelaciones.php"> Listado de cancelacion de suscripciones  </a>
           &nbsp|&nbsp   
                 <a href="listarHotsalesEnEspera.php"> Listado de Hotsales en Espera </a>
           &nbsp|&nbsp   
