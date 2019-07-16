@@ -91,7 +91,8 @@
 							<input type="submit" value="Pujar"> <!--boton-->
 							</fieldset>
 						</form>
-
+                        <center> <br> 
+                 <button type="button" onclick=" location.href='index.php' "> Volver </button>  </center>
             </body>
     </html>
 <?php

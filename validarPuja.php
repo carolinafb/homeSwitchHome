@@ -48,7 +48,7 @@ if (isset($_SESSION['nombre'])) {
 					}
 				}
 			}
-			echo '<script> window.location="listarSubastas.php"</script>';
+			echo '<script> window.location="index.php"</script>';
 		}
 		// SACAR LOS ECHO Y AGREGAR IF PARA COMPARAR CON PRECIO BASE Y CAMBIAR EL ERROR DDETALLAS DEL INDEX
 

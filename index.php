@@ -131,9 +131,9 @@
            <table>
              <tr>
                <?php
-               $semanaInicio= date("Y-m-d",strtotime(date("Y-m-d")."+ 24 week"));
-               $semanaFin=  date("Y-m-d",strtotime(date("Y-m-d")."+ 47 week")); ?>
-               <td><input type= 'date' name='porFecha' id='porFecha' style="width: 100%" min= "<?php echo $semanaInicio?>" max= "<?php echo $semanaFin?>" required/></td>
+             //  $semanaInicio= date("Y-m-d",strtotime(date("Y-m-d")."+ 24 week"));
+              // $semanaFin=  date("Y-m-d",strtotime(date("Y-m-d")."+ 47 week")); ?>
+               <td><input type= 'date' name='porFecha' id='porFecha' style="width: 100%" required/></td>
                <td><button type="submit" > Buscar </button></td>
              </tr>
            </table>
@@ -202,7 +202,8 @@
                 <?php } // Cierro el while?>
           </table> <!-- fin de tabla -->
         </center>
-  <?php }else{
+  <?php
+}else{
     if(isset($_GET['porNombre'])){
       echo '<script> alert ("No existe propiedad con ese nombre");</script>';
       echo '<script> window.location="index.php"; </script>';

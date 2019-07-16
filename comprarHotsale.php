@@ -27,7 +27,7 @@
 
             //if false mensaje de moto insuficiente
         }
-            echo '<script> window.location="listarHotsalesVigentes.php"</script>';
+        echo '<script> window.history.back()</script>';
          
 } 
 ?>
